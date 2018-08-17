@@ -8,13 +8,14 @@ public class Biblioteca
     {
         System.out.println(WELCOME_MESSAGE);
 
-        String[] books = new String[]
+        Book[] books = new Book[]
                 {
-                        "Book1",
-                        "Book2",
+                        new Book("Book1", "Author1"),
+                        new Book("Book2", "Author2"),
                 };
 
-        for (String book : books)
+
+        for (Book book : books)
         {
             System.out.println(book);
         }
