@@ -19,9 +19,15 @@ public class BibliotecaTest
 
         String[] expectedOutputPerLine = new String[]
                 {
+                        "",
                         "Welcome to Biblioteca.",
-                        "Book1 | Author1 | 2001",
-                        "Book2 | Author2 | 2002",
+                        "",
+                        "====================================",
+                        "| Title | Author  | Year Published |",
+                        "------------------------------------",
+                        "| Book1 | Author1 |           2001 |",
+                        "| Book2 | Author2 |           2002 |",
+                        "====================================",
                 };
         String[] stdOutLogLines = getSTDOutSplitPerLine();
 
