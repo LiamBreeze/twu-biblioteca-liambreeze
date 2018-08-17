@@ -7,5 +7,6 @@ public class Biblioteca
     public void start()
     {
         System.out.println(WELCOME_MESSAGE);
+        System.out.println("Book1");
     }
 }

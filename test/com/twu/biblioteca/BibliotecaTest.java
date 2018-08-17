@@ -16,6 +16,11 @@ public class BibliotecaTest
     {
         Biblioteca biblioteca = new Biblioteca();
         biblioteca.start();
-        assertEquals("Welcome to Biblioteca.\n", systemOutRule.getLogWithNormalizedLineSeparator());
+
+        String stdOutLog = systemOutRule.getLogWithNormalizedLineSeparator();
+        String[] stdOutLogLines = stdOutLog.split("\\R");
+
+        assertEquals("Welcome to Biblioteca.", stdOutLogLines[0]);
+        assertEquals("Book1", stdOutLogLines[1]);
     }
 }
