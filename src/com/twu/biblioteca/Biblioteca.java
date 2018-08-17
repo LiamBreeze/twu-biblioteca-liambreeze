@@ -10,14 +10,14 @@ public class Biblioteca
 
         Book[] books = new Book[]
                 {
-                        new Book("Book1", "Author1"),
-                        new Book("Book2", "Author2"),
+                        new Book("Book1", "Author1", 2001),
+                        new Book("Book2", "Author2", 2002),
                 };
 
 
         for (Book book : books)
         {
-            System.out.println(book);
+            System.out.println(book.getTitle() + " | " + book.getAuthor() + " | " + book.getPublishingYear());
         }
     }
 }
