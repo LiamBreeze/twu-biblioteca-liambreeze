@@ -7,6 +7,16 @@ public class Biblioteca
     public void start()
     {
         System.out.println(WELCOME_MESSAGE);
-        System.out.println("Book1");
+
+        String[] books = new String[]
+                {
+                        "Book1",
+                        "Book2",
+                };
+
+        for (String book : books)
+        {
+            System.out.println(book);
+        }
     }
 }

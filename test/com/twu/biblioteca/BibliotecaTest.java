@@ -12,15 +12,28 @@ public class BibliotecaTest
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog().muteForSuccessfulTests();
 
     @Test
-    public void testAppDisplaysWelcomeMessageOnStart()
+    public void testAppDisplaysWelcomeMessageAndListOfBooksOnStart()
     {
         Biblioteca biblioteca = new Biblioteca();
         biblioteca.start();
 
-        String stdOutLog = systemOutRule.getLogWithNormalizedLineSeparator();
-        String[] stdOutLogLines = stdOutLog.split("\\R");
+        String[] expectedOutputPerLine = new String[]
+                {
+                        "Welcome to Biblioteca.",
+                        "Book1",
+                        "Book2",
+                };
+        String[] stdOutLogLines = getSTDOutSplitPerLine();
 
-        assertEquals("Welcome to Biblioteca.", stdOutLogLines[0]);
-        assertEquals("Book1", stdOutLogLines[1]);
+        for (int index = 0; index < expectedOutputPerLine.length; index++)
+        {
+            assertEquals(expectedOutputPerLine[index], stdOutLogLines[index]);
+        }
+    }
+
+    private String[] getSTDOutSplitPerLine()
+    {
+        String stdOutLog = systemOutRule.getLogWithNormalizedLineSeparator();
+        return stdOutLog.split("\\R");
     }
 }
