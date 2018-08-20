@@ -6,7 +6,8 @@ public class OutputStrings
     public static final String OPTIONS = "Options:";
     public static final String OPTIONS_LIST_BOOKS = "  1) List books";
     public static final String OPTIONS_QUIT = "  2) Quit";
-    public static final String OPTIONS_CHECK_OUT_BOOK = "  3) Check out book";
+    public static final String OPTIONS_CHECK_OUT_BOOK = "  3) Checkout book";
+    public static final String OPTIONS_RETURN_BOOK = "  4) Return book";
     public static final String INVALID_MENU_OPTION_SELECTED = "Select a valid option!";
     public static final String CHECK_OUT_BOOK_SUCCESS_MESSAGE = "Thank you! Enjoy the book";
     public static final String CHECK_OUT_BOOK_UNSUCCESSFUL_MESSAGE = "That book is not available";

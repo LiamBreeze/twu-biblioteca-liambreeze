@@ -4,27 +4,92 @@ import java.util.ArrayList;
 
 public abstract class MainMenuOption
 {
-    public static final int LIST_BOOKS = 1;
-    public static final int QUIT = 2;
-    public static final int CHECK_OUT_BOOK = 3;
+    public enum Options
+    {
+        LIST_BOOKS
+                {
+                    @Override
+                    public String toString()
+                    {
+                        return OutputStrings.OPTIONS_LIST_BOOKS;
+                    }
+                },
+        QUIT
+                {
+                    @Override
+                    public String toString()
+                    {
+                        return OutputStrings.OPTIONS_QUIT;
+                    }
+                },
+        CHECK_OUT_BOOK
+                {
+                    @Override
+                    public String toString()
+                    {
+                        return OutputStrings.OPTIONS_CHECK_OUT_BOOK;
+                    }
+                },
+        RETURN_BOOK
+                {
+                    @Override
+                    public String toString()
+                    {
+                        return OutputStrings.OPTIONS_RETURN_BOOK;
+                    }
+                };
 
-    public static MainMenuOption getMainMenuOption(int userOptionSelectionID, ArrayList<Book> bookList)
+        public static Options getFromInputString(String inputString)
+        {
+            Options resultOption = null;
+
+            if (inputString.equals("1"))
+            {
+                resultOption = LIST_BOOKS;
+            }
+            else if (inputString.equals("2"))
+            {
+                resultOption = QUIT;
+            }
+            else if (inputString.equals("3"))
+            {
+                resultOption = CHECK_OUT_BOOK;
+            }
+            else if (inputString.equals("4"))
+            {
+                resultOption = RETURN_BOOK;
+            }
+
+            return resultOption;
+        }
+    }
+
+    public static MainMenuOption getMainMenuOption(String userOptionSelectionID, ArrayList<Book> bookList)
     {
         MainMenuOption optionSelected = new InvalidOption();
 
-        switch (userOptionSelectionID)
+        Options selectedOptionEnum = Options.getFromInputString(userOptionSelectionID);
+
+        if (selectedOptionEnum != null)
         {
-            case LIST_BOOKS:
-                optionSelected = new ListBooksOption(bookList);
-                break;
+            switch (selectedOptionEnum)
+            {
+                case LIST_BOOKS:
+                    optionSelected = new ListBooksOption(bookList);
+                    break;
 
-            case QUIT:
-                optionSelected = new QuitOption();
-                break;
+                case QUIT:
+                    optionSelected = new QuitOption();
+                    break;
 
-            case CHECK_OUT_BOOK:
-                optionSelected = new CheckOutBookOption(bookList);
-                break;
+                case CHECK_OUT_BOOK:
+                    optionSelected = new CheckOutBookOption(bookList);
+                    break;
+
+                case RETURN_BOOK:
+                    optionSelected = new ReturnBookOption();
+                    break;
+            }
         }
 
         return optionSelected;
@@ -33,9 +98,11 @@ public abstract class MainMenuOption
     public static void printOptions()
     {
         System.out.println(OutputStrings.OPTIONS);
-        System.out.println(OutputStrings.OPTIONS_LIST_BOOKS);
-        System.out.println(OutputStrings.OPTIONS_QUIT);
-        System.out.println(OutputStrings.OPTIONS_CHECK_OUT_BOOK);
+
+        for (Options mainMenuOption : MainMenuOption.Options.values())
+        {
+            System.out.println(mainMenuOption.toString());
+        }
     }
 
     public abstract boolean showResult();

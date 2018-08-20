@@ -42,6 +42,10 @@ public class BibliotecaAppTest
         String[] expectedOptionsString = new String[]
                 {
                         "Options:",
+                        "  1) List books",
+                        "  2) Quit",
+                        "  3) Checkout book",
+                        "  4) Return book",
                 };
 
         consoleMock.assertSTDOutContains(expectedOptionsString, 3);
@@ -59,6 +63,6 @@ public class BibliotecaAppTest
                         "Select a valid option!",
                 };
 
-        consoleMock.assertSTDOutContains(expectedMessage, 7);
+        consoleMock.assertSTDOutContains(expectedMessage, 8);
     }
 }

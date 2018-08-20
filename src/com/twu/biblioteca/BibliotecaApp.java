@@ -39,7 +39,7 @@ public class BibliotecaApp
         {
             if (userInputScanner.hasNext())
             {
-                int userOptionSelectionID = userInputScanner.nextInt();
+                String userOptionSelectionID = userInputScanner.next();
 
                 MainMenuOption userOptionSelection = MainMenuOption.getMainMenuOption(userOptionSelectionID, bookList);
                 isQuitSelected = userOptionSelection.showResult();
