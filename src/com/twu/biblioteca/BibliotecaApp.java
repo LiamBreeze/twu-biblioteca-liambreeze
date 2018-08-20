@@ -34,6 +34,10 @@ public class BibliotecaApp
                 BookListPrinter bookListPrinter = new BookListPrinter();
                 bookListPrinter.printBookList();
             }
+            else
+            {
+                System.out.println(OutputStrings.INVALID_MENU_OPTION_SELECTED);
+            }
         }
     }
 

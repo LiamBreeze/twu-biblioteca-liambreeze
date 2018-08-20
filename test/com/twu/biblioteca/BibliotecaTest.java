@@ -61,4 +61,18 @@ public class BibliotecaTest
         consoleTestMock.assertSTDOutContains(bookDetails, 5);
     }
 
+    @Test
+    public void testInvalidMenuOptionPrintsOutMessage()
+    {
+        consoleTestMock.addUserInputSequence("0");
+
+        bibliotecaApp.start();
+
+        String[] expectedMessage = new String[]
+                {
+                        "Select a valid option!",
+                };
+
+        consoleTestMock.assertSTDOutContains(expectedMessage, 5);
+    }
 }
