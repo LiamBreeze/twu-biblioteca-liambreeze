@@ -25,7 +25,7 @@ public class BibliotecaApp
         System.out.println();
         printWelcomeMessage();
         System.out.println();
-        MainMenuOption.printOptions();
+        MainMenuOption.printMainMenu();
         handleUserSelection();
     }
 

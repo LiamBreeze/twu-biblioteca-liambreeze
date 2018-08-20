@@ -1,9 +1,19 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public abstract class MainMenuOption
 {
+    protected final ArrayList<Book> bookList;
+    protected final Scanner userInputScanner;
+
+    public MainMenuOption(ArrayList<Book> bookList)
+    {
+        this.bookList = bookList;
+        this.userInputScanner = new Scanner(System.in);
+    }
+
     public enum Options
     {
         LIST_BOOKS
@@ -87,7 +97,7 @@ public abstract class MainMenuOption
                     break;
 
                 case RETURN_BOOK:
-                    optionSelected = new ReturnBookOption();
+                    optionSelected = new ReturnBookOption(bookList);
                     break;
             }
         }
@@ -95,7 +105,7 @@ public abstract class MainMenuOption
         return optionSelected;
     }
 
-    public static void printOptions()
+    public static void printMainMenu()
     {
         System.out.println(OutputStrings.OPTIONS);
 
