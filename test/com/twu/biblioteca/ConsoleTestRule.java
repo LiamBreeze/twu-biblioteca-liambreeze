@@ -24,7 +24,7 @@ public class ConsoleTestRule implements TestRule
         }
     }
 
-    public void addUserInputSequence(String userInput)
+    public void addUserInputSequence(String[] userInput)
     {
         systemInMock.provideLines(userInput);
     }

@@ -7,7 +7,7 @@ import org.junit.Test;
 public class BibliotecaTest
 {
     @Rule
-    public final ConsoleTestRule consoleTestMock = new ConsoleTestRule();
+    public final ConsoleTestRule consoleMock = new ConsoleTestRule();
 
     private BibliotecaApp bibliotecaApp;
 
@@ -27,7 +27,7 @@ public class BibliotecaTest
                         "Welcome to Biblioteca.",
                 };
 
-        consoleTestMock.assertSTDOutContains(expectedOutputPerLine, 1);
+        consoleMock.assertSTDOutContains(expectedOutputPerLine, 1);
     }
 
     @Test
@@ -41,13 +41,13 @@ public class BibliotecaTest
                         "  1) List Books",
                 };
 
-        consoleTestMock.assertSTDOutContains(expectedOptionsString, 3);
+        consoleMock.assertSTDOutContains(expectedOptionsString, 3);
     }
 
     @Test
     public void testAppDisplaysListOfBooksWhenSelected()
     {
-        consoleTestMock.addUserInputSequence("1");
+        consoleMock.addUserInputSequence(new String[] { "1" });
 
         bibliotecaApp.start();
 
@@ -58,13 +58,13 @@ public class BibliotecaTest
                         "------------------------------------",
                 };
 
-        consoleTestMock.assertSTDOutContains(bookDetails, 5);
+        consoleMock.assertSTDOutContains(bookDetails, 5);
     }
 
     @Test
     public void testInvalidMenuOptionPrintsOutMessage()
     {
-        consoleTestMock.addUserInputSequence("0");
+        consoleMock.addUserInputSequence(new String[] { "0" });
 
         bibliotecaApp.start();
 
@@ -73,6 +73,21 @@ public class BibliotecaTest
                         "Select a valid option!",
                 };
 
-        consoleTestMock.assertSTDOutContains(expectedMessage, 5);
+        consoleMock.assertSTDOutContains(expectedMessage, 5);
+    }
+
+    @Test
+    public void testReEnteringMainMenuSelection()
+    {
+        consoleMock.addUserInputSequence(new String[] { "0", "0"});
+
+        bibliotecaApp.start();
+
+        String[] expectedMessage = new String[]
+                {
+                        "Select a valid option!",
+                };
+
+        consoleMock.assertSTDOutContains(expectedMessage, 6);
     }
 }

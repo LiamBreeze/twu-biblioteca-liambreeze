@@ -25,7 +25,7 @@ public class BibliotecaApp
     {
         Scanner userInputScanner = new Scanner(System.in);
 
-        if (userInputScanner.hasNext())
+        while (userInputScanner.hasNext())
         {
             int userOptionSelection = userInputScanner.nextInt();
 
