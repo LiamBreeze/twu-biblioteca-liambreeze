@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 public class ListBooksOptionTest
 {
     @Rule
@@ -12,7 +14,7 @@ public class ListBooksOptionTest
     @Test
     public void testListBooksDisplaysBooks()
     {
-        ListBooksOption listBooksOption = new ListBooksOption();
+        ListBooksOption listBooksOption = new ListBooksOption(new ArrayList<Book>());
 
         Assert.assertFalse(listBooksOption.showResult());
 

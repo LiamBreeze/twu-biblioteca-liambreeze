@@ -1,14 +1,23 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BibliotecaApp
 {
+    private ArrayList<Book> bookList;
 
     public static void main(String[] args)
     {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
         bibliotecaApp.start();
+    }
+
+    public BibliotecaApp()
+    {
+        bookList = new ArrayList<Book>();
+        bookList.add(new Book("Book1", "Author1", 2001));
+        bookList.add(new Book("Book2", "Author2", 2002));
     }
 
     public void start()
@@ -32,7 +41,7 @@ public class BibliotecaApp
             {
                 int userOptionSelectionID = userInputScanner.nextInt();
 
-                MainMenuOption userOptionSelection = MainMenuOption.getMainMenuOption(userOptionSelectionID);
+                MainMenuOption userOptionSelection = MainMenuOption.getMainMenuOption(userOptionSelectionID, bookList);
                 isQuitSelected = userOptionSelection.showResult();
             }
         }

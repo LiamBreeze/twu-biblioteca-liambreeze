@@ -1,26 +1,21 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+
 public class BookListPrinter
 {
-    public void printBookList()
+    public void printBookList(ArrayList<Book> bookList)
     {
         System.out.println(OutputStrings.TABLE_HEADER);
         printTableTitle();
         System.out.println(OutputStrings.TABLE_ROW_SEPARATOR);
-        printBooks();
+        printBooks(bookList);
         System.out.println(OutputStrings.TABLE_HEADER);
     }
 
-    private void printBooks()
+    private void printBooks(ArrayList<Book> bookList)
     {
-        Book[] books = new Book[]
-                {
-                        new Book("Book1", "Author1", 2001),
-                        new Book("Book2", "Author2", 2002),
-                };
-
-
-        for (Book book : books)
+        for (Book book : bookList)
         {
             printBook(book);
         }

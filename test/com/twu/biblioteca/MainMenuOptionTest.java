@@ -9,28 +9,28 @@ public class MainMenuOptionTest
     @Test
     public void testMainMenuOptionInvalid()
     {
-        MainMenuOption menuOption = MainMenuOption.getMainMenuOption(0);
+        MainMenuOption menuOption = MainMenuOption.getMainMenuOption(0, null);
         Assert.assertThat(menuOption, new IsInstanceOf(InvalidOption.class));
     }
 
     @Test
     public void testMainMenuOptionListBooks()
     {
-        MainMenuOption menuOption = MainMenuOption.getMainMenuOption(MainMenuOption.LIST_BOOKS);
+        MainMenuOption menuOption = MainMenuOption.getMainMenuOption(MainMenuOption.LIST_BOOKS, null);
         Assert.assertThat(menuOption, new IsInstanceOf(ListBooksOption.class));
     }
 
     @Test
     public void testMainMenuOptionQuit()
     {
-        MainMenuOption menuOption = MainMenuOption.getMainMenuOption(MainMenuOption.QUIT);
+        MainMenuOption menuOption = MainMenuOption.getMainMenuOption(MainMenuOption.QUIT, null);
         Assert.assertThat(menuOption, new IsInstanceOf(QuitOption.class));
     }
 
     @Test
     public void testMainMenuOptionCheckOutBook()
     {
-        MainMenuOption menuOption = MainMenuOption.getMainMenuOption(MainMenuOption.CHECK_OUT_BOOK);
+        MainMenuOption menuOption = MainMenuOption.getMainMenuOption(MainMenuOption.CHECK_OUT_BOOK, null);
         Assert.assertThat(menuOption, new IsInstanceOf(CheckOutBookOption.class));
     }
 }
