@@ -9,8 +9,8 @@ public class QuitOptionTest
     @Test
     public void testQuitReturnsTrue()
     {
-        QuitOption quitOption = new QuitOption();
+        MainMenu quitOption = new MainMenu(null);
 
-        Assert.assertTrue(quitOption.showResult());
+        Assert.assertTrue(quitOption.selectOption(MainMenuOption.QUIT));
     }
 }

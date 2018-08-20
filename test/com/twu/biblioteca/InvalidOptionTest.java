@@ -12,9 +12,9 @@ public class InvalidOptionTest
     @Test
     public void testInvalidOptionPrintsOutMessage()
     {
-        InvalidOption invalidOption = new InvalidOption();
+        MainMenu invalidOption = new MainMenu(null);
 
-        Assert.assertFalse(invalidOption.showResult());
+        Assert.assertFalse(invalidOption.selectOption(""));
 
         String[] expectedMessage = new String[]
                 {

@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class BibliotecaApp
 {
     private ArrayList<Book> bookList;
+    private MainMenu mainMenu;
 
     public static void main(String[] args)
     {
@@ -18,6 +19,8 @@ public class BibliotecaApp
         bookList = new ArrayList<Book>();
         bookList.add(new Book("Book1", "Author1", 2001));
         bookList.add(new Book("Book2", "Author2", 2002));
+
+        mainMenu = new MainMenu(bookList);
     }
 
     public void start()
@@ -25,7 +28,7 @@ public class BibliotecaApp
         System.out.println();
         printWelcomeMessage();
         System.out.println();
-        MainMenuOption.printMainMenu();
+        System.out.println(mainMenu);
         handleUserSelection();
     }
 
@@ -39,10 +42,8 @@ public class BibliotecaApp
         {
             if (userInputScanner.hasNext())
             {
-                String userOptionSelectionID = userInputScanner.next();
-
-                MainMenuOption userOptionSelection = MainMenuOption.getMainMenuOption(userOptionSelectionID, bookList);
-                isQuitSelected = userOptionSelection.showResult();
+                String userOptionSelection = userInputScanner.next();
+                isQuitSelected = mainMenu.selectOption(userOptionSelection);
             }
         }
     }

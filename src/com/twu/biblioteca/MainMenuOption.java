@@ -5,115 +5,53 @@ import java.util.Scanner;
 
 public abstract class MainMenuOption
 {
-    protected final ArrayList<Book> bookList;
-    protected final Scanner userInputScanner;
+    public static final String LIST_BOOKS = "1";
+    public static final String QUIT = "2";
+    public static final String CHECKOUT_BOOK = "3";
+    public static final String RETURN_BOOK = "4";
+    public static final String INVALID = "";
 
-    public MainMenuOption(ArrayList<Book> bookList)
+    public abstract String getOptionType();
+
+    public abstract boolean select(ArrayList<Book> bookList);
+
+    public static MainMenuOption create(String type)
     {
-        this.bookList = bookList;
-        this.userInputScanner = new Scanner(System.in);
-    }
+        MainMenuOption option = new InvalidOption();
 
-    public enum Options
-    {
-        LIST_BOOKS
-                {
-                    @Override
-                    public String toString()
-                    {
-                        return OutputStrings.OPTIONS_LIST_BOOKS;
-                    }
-                },
-        QUIT
-                {
-                    @Override
-                    public String toString()
-                    {
-                        return OutputStrings.OPTIONS_QUIT;
-                    }
-                },
-        CHECK_OUT_BOOK
-                {
-                    @Override
-                    public String toString()
-                    {
-                        return OutputStrings.OPTIONS_CHECK_OUT_BOOK;
-                    }
-                },
-        RETURN_BOOK
-                {
-                    @Override
-                    public String toString()
-                    {
-                        return OutputStrings.OPTIONS_RETURN_BOOK;
-                    }
-                };
-
-        public static Options getFromInputString(String inputString)
+        if (type.equals(LIST_BOOKS))
         {
-            Options resultOption = null;
-
-            if (inputString.equals("1"))
-            {
-                resultOption = LIST_BOOKS;
-            }
-            else if (inputString.equals("2"))
-            {
-                resultOption = QUIT;
-            }
-            else if (inputString.equals("3"))
-            {
-                resultOption = CHECK_OUT_BOOK;
-            }
-            else if (inputString.equals("4"))
-            {
-                resultOption = RETURN_BOOK;
-            }
-
-            return resultOption;
-        }
-    }
-
-    public static MainMenuOption getMainMenuOption(String userOptionSelectionID, ArrayList<Book> bookList)
-    {
-        MainMenuOption optionSelected = new InvalidOption();
-
-        Options selectedOptionEnum = Options.getFromInputString(userOptionSelectionID);
-
-        if (selectedOptionEnum != null)
+            option = new ListBooksOption();
+        } else if (type.equals(QUIT))
         {
-            switch (selectedOptionEnum)
-            {
-                case LIST_BOOKS:
-                    optionSelected = new ListBooksOption(bookList);
-                    break;
-
-                case QUIT:
-                    optionSelected = new QuitOption();
-                    break;
-
-                case CHECK_OUT_BOOK:
-                    optionSelected = new CheckOutBookOption(bookList);
-                    break;
-
-                case RETURN_BOOK:
-                    optionSelected = new ReturnBookOption(bookList);
-                    break;
-            }
+            option = new QuitOption();
+        } else if (type.equals(CHECKOUT_BOOK))
+        {
+            option = new CheckoutBookOption();
+        } else if (type.equals(RETURN_BOOK))
+        {
+            option = new ReturnBookOption();
         }
 
-        return optionSelected;
+        return option;
     }
 
-    public static void printMainMenu()
+    protected Book getBookFromUser()
     {
-        System.out.println(OutputStrings.OPTIONS);
+        Scanner userInputScanner = new Scanner(System.in);
 
-        for (Options mainMenuOption : MainMenuOption.Options.values())
+        Book book = null;
+
+        if (userInputScanner.hasNext())
         {
-            System.out.println(mainMenuOption.toString());
-        }
-    }
+            String title = userInputScanner.next();
 
-    public abstract boolean showResult();
+            String author = userInputScanner.next();
+            int publishingYear = userInputScanner.nextInt();
+
+            book = new Book(title, author, publishingYear);
+        }
+
+        return book;
+    }
 }

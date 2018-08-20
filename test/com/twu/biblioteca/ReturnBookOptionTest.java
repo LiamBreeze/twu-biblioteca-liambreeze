@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -12,21 +11,13 @@ public class ReturnBookOptionTest
     @Rule
     public final ConsoleTestRule consoleMock = new ConsoleTestRule();
 
-    private ArrayList<Book> expectedBookList;
-
-    @Before
-    public void setUp()
-    {
-        expectedBookList = buildBookList(2);
-    }
-
     @Test
     public void testReturningNoBooksHasNoEffectOnBookList()
     {
         int numberOfTestBooks = 2;
         String[] userInput = {};
 
-        testReturnBook(numberOfTestBooks, userInput);
+        testReturnBook(numberOfTestBooks, userInput, buildBookList(2));
     }
 
     @Test
@@ -35,18 +26,36 @@ public class ReturnBookOptionTest
         int numberOfTestBooks = 1;
         String[] userInput = {"Book2", "Author2", "2002"};
 
-        testReturnBook(numberOfTestBooks, userInput);
+        testReturnBook(numberOfTestBooks, userInput, buildBookList(2));
     }
 
-    private void testReturnBook(int numberOfBooksRequested, String[] userInput)
+    @Test
+    public void testReturningMultipleBooks()
+    {
+        int numberOfTestBooks = 2;
+        String[] userInput =
+                {
+                        "Book3", "Author3", "2003",
+                        "Book4", "Author4", "2004",
+                        "Book5", "Author5", "2005",
+                };
+
+        testReturnBook(numberOfTestBooks, userInput, buildBookList(5));
+    }
+
+    private void testReturnBook(int numberOfBooksRequested, String[] userInput, ArrayList<Book> expectedBookList)
     {
         ArrayList<Book> testBookList = buildBookList(numberOfBooksRequested);
 
-        ReturnBookOption returnBookOption = new ReturnBookOption(testBookList);
+        MainMenu returnBookOption = new MainMenu(testBookList);
 
         consoleMock.addUserInputSequence(userInput);
 
-        Assert.assertFalse(returnBookOption.showResult());
+        for (int testCount = 0; testCount < userInput.length; testCount += 3)
+        {
+            Assert.assertFalse(returnBookOption.selectOption(MainMenuOption.RETURN_BOOK));
+        }
+
         Assert.assertEquals(expectedBookList, testBookList);
     }
 

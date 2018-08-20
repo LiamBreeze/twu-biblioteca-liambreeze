@@ -1,14 +1,17 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+
 public class QuitOption extends MainMenuOption
 {
-    public QuitOption()
+    @Override
+    public String getOptionType()
     {
-        super(null);
+        return MainMenuOption.QUIT;
     }
 
     @Override
-    public boolean showResult()
+    public boolean select(ArrayList<Book> bookList)
     {
         return true;
     }

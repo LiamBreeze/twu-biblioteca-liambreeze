@@ -20,7 +20,7 @@ public class BibliotecaAppTest
     @Test
     public void testAppDisplaysWelcomeMessageOnStartup()
     {
-        consoleMock.addUserInputSequence(new String[] { "2" });
+        consoleMock.addUserInputSequence(new String[]{"2"});
 
         bibliotecaApp.start();
 
@@ -35,7 +35,7 @@ public class BibliotecaAppTest
     @Test
     public void testAppDisplaysOptionsOnStartup()
     {
-        consoleMock.addUserInputSequence(new String[] { "2" });
+        consoleMock.addUserInputSequence(new String[]{"2"});
 
         bibliotecaApp.start();
 
@@ -54,7 +54,7 @@ public class BibliotecaAppTest
     @Test
     public void testReEnteringMainMenuSelection()
     {
-        consoleMock.addUserInputSequence(new String[] { "0", "0", "2"});
+        consoleMock.addUserInputSequence(new String[]{"0", "0", "2"});
 
         bibliotecaApp.start();
 
@@ -63,6 +63,6 @@ public class BibliotecaAppTest
                         "Select a valid option!",
                 };
 
-        consoleMock.assertSTDOutContains(expectedMessage, 8);
+        consoleMock.assertSTDOutContains(expectedMessage, 10);
     }
 }

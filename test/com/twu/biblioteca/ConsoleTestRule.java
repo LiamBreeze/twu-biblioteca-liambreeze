@@ -38,9 +38,11 @@ public class ConsoleTestRule implements TestRule
     @Override
     public Statement apply(final Statement base, final Description description)
     {
-        return new Statement() {
+        return new Statement()
+        {
             @Override
-            public void evaluate() throws Throwable {
+            public void evaluate() throws Throwable
+            {
                 systemInAndOutRuleChain.apply(base, description).evaluate();
             }
         };

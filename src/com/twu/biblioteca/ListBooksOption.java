@@ -4,16 +4,23 @@ import java.util.ArrayList;
 
 public class ListBooksOption extends MainMenuOption
 {
-    public ListBooksOption(ArrayList<Book> bookList)
+    @Override
+    public String getOptionType()
     {
-        super(bookList);
+        return MainMenuOption.LIST_BOOKS;
     }
 
     @Override
-    public boolean showResult()
+    public boolean select(ArrayList<Book> bookList)
+    {
+        return listBooks(bookList);
+    }
+
+    private boolean listBooks(ArrayList<Book> bookList)
     {
         BookListPrinter bookListPrinter = new BookListPrinter();
         bookListPrinter.printBookList(bookList);
+
         return false;
     }
 }

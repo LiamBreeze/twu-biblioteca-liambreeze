@@ -4,21 +4,23 @@ import java.util.ArrayList;
 
 public class ReturnBookOption extends MainMenuOption
 {
-    public ReturnBookOption(ArrayList<Book> bookList)
+    @Override
+    public String getOptionType()
     {
-        super(bookList);
+        return MainMenuOption.RETURN_BOOK;
     }
 
     @Override
-    public boolean showResult()
+    public boolean select(ArrayList<Book> bookList)
     {
-        if (userInputScanner.hasNext())
-        {
-            String bookTitle = userInputScanner.next();
-            String bookAuthor = userInputScanner.next();
-            int publishingYear = userInputScanner.nextInt();
+        return returnBook(bookList, getBookFromUser());
+    }
 
-            bookList.add(new Book(bookTitle, bookAuthor, publishingYear));
+    private boolean returnBook(ArrayList<Book> bookList, Book book)
+    {
+        if (book != null)
+        {
+            bookList.add(book);
         }
 
         return false;

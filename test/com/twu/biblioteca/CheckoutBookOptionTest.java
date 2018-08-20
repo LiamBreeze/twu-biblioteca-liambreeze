@@ -7,13 +7,13 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class CheckOutBookOptionTest
+public class CheckoutBookOptionTest
 {
     @Rule
     public final ConsoleTestRule consoleMock = new ConsoleTestRule();
 
     private ArrayList<Book> bookList;
-    private CheckOutBookOption checkOutBookOption;
+    private MainMenu checkOutBookOption;
 
     @Before
     public void setUp()
@@ -22,14 +22,14 @@ public class CheckOutBookOptionTest
         bookList.add(new Book("Book1", "Author1", 2001));
         bookList.add(new Book("Book2", "Author2", 2002));
 
-        checkOutBookOption = new CheckOutBookOption(bookList);
+        checkOutBookOption = new MainMenu(bookList);
     }
 
     @Test
     public void testCheckedOutBooksAreNotListed()
     {
         selectBook("Book1", "Author1", "2001");
-        Assert.assertFalse(checkOutBookOption.showResult());
+        Assert.assertFalse(checkOutBookOption.selectOption(MainMenuOption.CHECKOUT_BOOK));
         assertBookWasRemoved();
     }
 
@@ -37,7 +37,7 @@ public class CheckOutBookOptionTest
     public void testSuccessfulBookCheckoutMessage()
     {
         selectBook("Book1", "Author1", "2001");
-        Assert.assertFalse(checkOutBookOption.showResult());
+        Assert.assertFalse(checkOutBookOption.selectOption(MainMenuOption.CHECKOUT_BOOK));
         assertSuccessMessageWasPrinted();
     }
 
@@ -45,7 +45,7 @@ public class CheckOutBookOptionTest
     public void testUnsuccessfulBookCheckoutMessage()
     {
         selectBook("Book3", "Author3", "2003");
-        Assert.assertFalse(checkOutBookOption.showResult());
+        Assert.assertFalse(checkOutBookOption.selectOption(MainMenuOption.CHECKOUT_BOOK));
         assertUnsuccessfulMessageWasPrinted();
     }
 

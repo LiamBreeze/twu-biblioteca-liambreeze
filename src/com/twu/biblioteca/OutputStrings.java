@@ -19,4 +19,5 @@ public class OutputStrings
     public static final String TITLE = "Title";
     public static final String AUTHOR = "Author";
     public static final String YEAR_PUBLISHED = "Year Published";
+    public static final String NEW_LINE_SEPARATOR = System.getProperty("line.separator");
 }

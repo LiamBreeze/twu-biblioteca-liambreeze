@@ -14,9 +14,9 @@ public class ListBooksOptionTest
     @Test
     public void testListBooksDisplaysBooks()
     {
-        ListBooksOption listBooksOption = new ListBooksOption(new ArrayList<Book>());
+        MainMenu listBooksOption = new MainMenu(new ArrayList<Book>());
 
-        Assert.assertFalse(listBooksOption.showResult());
+        Assert.assertFalse(listBooksOption.selectOption(MainMenuOption.LIST_BOOKS));
 
         String[] listBooksString = new String[]
                 {
