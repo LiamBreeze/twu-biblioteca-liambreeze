@@ -4,11 +4,11 @@ public class BookListPrinter
 {
     public void printBookList()
     {
-        printTableHeader();
+        System.out.println(OutputStrings.TABLE_HEADER);
         printTableTitle();
-        printTableSeparator();
+        System.out.println(OutputStrings.TABLE_ROW_SEPARATOR);
         printBooks();
-        printTableHeader();
+        System.out.println(OutputStrings.TABLE_HEADER);
     }
 
     private void printBooks()
@@ -28,51 +28,51 @@ public class BookListPrinter
 
     private void printTableTitle()
     {
-        printTableColumnSeparator();
+        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
         printSpaces(1);
 
         System.out.print(OutputStrings.TITLE);
 
         printSpaces(1);
-        printTableColumnSeparator();
+        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
         printSpaces(1);
 
-        System.out.print(OutputStrings.AUTHOR_STRING);
+        System.out.print(OutputStrings.AUTHOR);
 
         printSpaces(1);
         printSpaces(1);
-        printTableColumnSeparator();
+        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
         printSpaces(1);
 
-        System.out.print(OutputStrings.YEAR_PUBLISHED_STRING);
+        System.out.print(OutputStrings.YEAR_PUBLISHED);
 
         printSpaces(1);
-        printTableColumnSeparator();
+        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
 
         System.out.println();
     }
 
     private void printBook(Book book)
     {
-        printTableColumnSeparator();
+        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
         printSpaces(1);
 
         System.out.print(book.getTitle());
 
         printSpaces(1);
-        printTableColumnSeparator();
+        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
         printSpaces(1);
 
         System.out.print(book.getAuthor());
 
         printSpaces(1);
-        printTableColumnSeparator();
+        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
         printSpaces(11);
 
         System.out.print(book.getPublishingYear());
 
         printSpaces(1);
-        printTableColumnSeparator();
+        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
 
         System.out.println();
     }
@@ -81,22 +81,8 @@ public class BookListPrinter
     {
         for (int spaceNumber = 0; spaceNumber < numberOfSpaces; spaceNumber++)
         {
-            System.out.print(OutputStrings.SPACE_STRING);
+            System.out.print(OutputStrings.SPACE);
         }
     }
 
-    private void printTableColumnSeparator()
-    {
-        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR_STRING);
-    }
-
-    private void printTableSeparator()
-    {
-        System.out.println(OutputStrings.TABLE_ROW_SEPARATOR);
-    }
-
-    private void printTableHeader()
-    {
-        System.out.println(OutputStrings.TABLE_HEADER_STRING);
-    }
 }

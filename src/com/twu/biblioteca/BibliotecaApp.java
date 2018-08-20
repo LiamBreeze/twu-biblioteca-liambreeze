@@ -39,12 +39,12 @@ public class BibliotecaApp
 
     private void printOptions()
     {
-        System.out.println(OutputStrings.OPTIONS_STRING);
-        System.out.println(OutputStrings.OPTIONS_LIST_BOOKS_STRING);
+        System.out.println(OutputStrings.OPTIONS);
+        System.out.println(OutputStrings.OPTIONS_LIST_BOOKS);
     }
 
     private void printWelcomeMessage()
     {
-        System.out.println(OutputStrings.WELCOME_MESSAGE_STRING);
+        System.out.println(OutputStrings.WELCOME_MESSAGE);
     }
 }
