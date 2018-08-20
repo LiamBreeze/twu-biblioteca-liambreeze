@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import org.junit.Assert;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
+import org.junit.rules.RuleChain;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
@@ -11,6 +12,7 @@ public class ConsoleTestRule implements TestRule
 {
     private final SystemOutRule systemOutMock = new SystemOutRule().enableLog().muteForSuccessfulTests();
     private final TextFromStandardInputStream systemInMock = TextFromStandardInputStream.emptyStandardInputStream();
+    private final RuleChain systemInAndOutRuleChain = RuleChain.outerRule(systemOutMock).around(systemInMock);
 
     public void assertSTDOutContains(String[] expectedOutputPerLine, int lineOffset)
     {
@@ -36,24 +38,11 @@ public class ConsoleTestRule implements TestRule
     @Override
     public Statement apply(final Statement base, final Description description)
     {
-        final Statement applySystemOutMock = new Statement()
-        {
+        return new Statement() {
             @Override
-            public void evaluate()
-            {
-                systemOutMock.apply(base, description);
+            public void evaluate() throws Throwable {
+                systemInAndOutRuleChain.apply(base, description).evaluate();
             }
         };
-
-        Statement applySystemOutAndInMock = new Statement()
-        {
-            @Override
-            public void evaluate()
-            {
-                systemInMock.apply(applySystemOutMock, description);
-            }
-        };
-
-        return applySystemOutAndInMock;
     }
 }
