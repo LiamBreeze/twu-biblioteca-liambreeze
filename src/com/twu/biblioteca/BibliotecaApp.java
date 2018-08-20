@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class BibliotecaApp
 {
-    private static final int OPTIONS_LIST_BOOKS = 1;
 
     public static void main(String[] args)
     {
@@ -25,18 +24,16 @@ public class BibliotecaApp
     {
         Scanner userInputScanner = new Scanner(System.in);
 
-        while (userInputScanner.hasNext())
-        {
-            int userOptionSelection = userInputScanner.nextInt();
+        boolean isQuitSelected = false;
 
-            if (userOptionSelection == OPTIONS_LIST_BOOKS)
+        while (!isQuitSelected)
+        {
+            if (userInputScanner.hasNext())
             {
-                BookListPrinter bookListPrinter = new BookListPrinter();
-                bookListPrinter.printBookList();
-            }
-            else
-            {
-                System.out.println(OutputStrings.INVALID_MENU_OPTION_SELECTED);
+                int userOptionSelectionID = userInputScanner.nextInt();
+
+                MainMenuOption userOptionSelection = MainMenuOption.getMainMenuOption(userOptionSelectionID);
+                isQuitSelected = userOptionSelection.showResult();
             }
         }
     }

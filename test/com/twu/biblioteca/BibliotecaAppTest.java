@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class BibliotecaTest
+public class BibliotecaAppTest
 {
     @Rule
     public final ConsoleTestRule consoleMock = new ConsoleTestRule();
@@ -20,6 +20,8 @@ public class BibliotecaTest
     @Test
     public void testAppDisplaysWelcomeMessageOnStartup()
     {
+        consoleMock.addUserInputSequence(new String[] { "2" });
+
         bibliotecaApp.start();
 
         String[] expectedOutputPerLine = new String[]
@@ -33,6 +35,8 @@ public class BibliotecaTest
     @Test
     public void testAppDisplaysOptionsOnStartup()
     {
+        consoleMock.addUserInputSequence(new String[] { "2" });
+
         bibliotecaApp.start();
 
         String[] expectedOptionsString = new String[]
@@ -45,41 +49,9 @@ public class BibliotecaTest
     }
 
     @Test
-    public void testAppDisplaysListOfBooksWhenSelected()
-    {
-        consoleMock.addUserInputSequence(new String[] { "1" });
-
-        bibliotecaApp.start();
-
-        String[] bookDetails = new String[]
-                {
-                        "====================================",
-                        "| Title | Author  | Year Published |",
-                        "------------------------------------",
-                };
-
-        consoleMock.assertSTDOutContains(bookDetails, 5);
-    }
-
-    @Test
-    public void testInvalidMenuOptionPrintsOutMessage()
-    {
-        consoleMock.addUserInputSequence(new String[] { "0" });
-
-        bibliotecaApp.start();
-
-        String[] expectedMessage = new String[]
-                {
-                        "Select a valid option!",
-                };
-
-        consoleMock.assertSTDOutContains(expectedMessage, 5);
-    }
-
-    @Test
     public void testReEnteringMainMenuSelection()
     {
-        consoleMock.addUserInputSequence(new String[] { "0", "0"});
+        consoleMock.addUserInputSequence(new String[] { "0", "0", "2"});
 
         bibliotecaApp.start();
 
