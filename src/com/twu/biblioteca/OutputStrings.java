@@ -8,6 +8,7 @@ public class OutputStrings
     public static final String OPTIONS_QUIT = "  2) Quit";
     public static final String OPTIONS_CHECK_OUT_BOOK = "  3) Check out book";
     public static final String INVALID_MENU_OPTION_SELECTED = "Select a valid option!";
+    public static final String CHECK_OUT_BOOK_SUCCESS_MESSAGE = "Thank you! Enjoy the book";
 
     public static final String TABLE_HEADER = "====================================";
     public static final String TABLE_ROW_SEPARATOR = "------------------------------------";

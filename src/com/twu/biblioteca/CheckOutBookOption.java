@@ -22,7 +22,12 @@ public class CheckOutBookOption extends MainMenuOption
         int bookReleaseDate = getBookReleaseDateFromUser();
 
         Book book = new Book(bookTitle, bookAuthor, bookReleaseDate);
-        bookList.remove(book);
+        Boolean isDeleteSuccessful = bookList.remove(book);
+
+        if (isDeleteSuccessful)
+        {
+            System.out.println(OutputStrings.CHECK_OUT_BOOK_SUCCESS_MESSAGE);
+        }
 
         return false;
     }
