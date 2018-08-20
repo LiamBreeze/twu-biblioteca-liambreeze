@@ -28,7 +28,7 @@ public class CheckOutBookOptionTest
     @Test
     public void testCheckedOutBooksAreNotListed()
     {
-        selectBook();
+        selectBook("Book1", "Author1", "2001");
         Assert.assertFalse(checkOutBookOption.showResult());
         assertBookWasRemoved();
     }
@@ -36,18 +36,26 @@ public class CheckOutBookOptionTest
     @Test
     public void testSuccessfulBookCheckoutMessage()
     {
-        selectBook();
+        selectBook("Book1", "Author1", "2001");
         Assert.assertFalse(checkOutBookOption.showResult());
         assertSuccessMessageWasPrinted();
     }
 
-    private void selectBook()
+    @Test
+    public void testUnsuccessfulBookCheckoutMessage()
+    {
+        selectBook("Book3", "Author3", "2003");
+        Assert.assertFalse(checkOutBookOption.showResult());
+        assertUnsuccessfulMessageWasPrinted();
+    }
+
+    private void selectBook(String title, String author, String yearPublished)
     {
         consoleMock.addUserInputSequence(new String[]
                 {
-                        "Book1",
-                        "Author1",
-                        "2001"
+                        title,
+                        author,
+                        yearPublished
                 });
     }
 
@@ -66,6 +74,15 @@ public class CheckOutBookOptionTest
                         "Thank you! Enjoy the book",
                 };
 
+        consoleMock.assertSTDOutContains(expectedMessage, 0);
+    }
+
+    private void assertUnsuccessfulMessageWasPrinted()
+    {
+        String[] expectedMessage = new String[]
+                {
+                        "That book is not available",
+                };
         consoleMock.assertSTDOutContains(expectedMessage, 0);
     }
 }

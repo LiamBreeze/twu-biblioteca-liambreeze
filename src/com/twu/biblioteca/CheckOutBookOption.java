@@ -28,6 +28,10 @@ public class CheckOutBookOption extends MainMenuOption
         {
             System.out.println(OutputStrings.CHECK_OUT_BOOK_SUCCESS_MESSAGE);
         }
+        else
+        {
+            System.out.println(OutputStrings.CHECK_OUT_BOOK_UNSUCCESSFUL_MESSAGE);
+        }
 
         return false;
     }
