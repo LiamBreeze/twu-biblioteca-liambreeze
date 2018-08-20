@@ -16,7 +16,7 @@ public class BibliotecaApp
         System.out.println();
         printWelcomeMessage();
         System.out.println();
-        printOptions();
+        MainMenuOption.printOptions();
         handleUserSelection();
     }
 
@@ -36,12 +36,6 @@ public class BibliotecaApp
                 isQuitSelected = userOptionSelection.showResult();
             }
         }
-    }
-
-    private void printOptions()
-    {
-        System.out.println(OutputStrings.OPTIONS);
-        System.out.println(OutputStrings.OPTIONS_LIST_BOOKS);
     }
 
     private void printWelcomeMessage()

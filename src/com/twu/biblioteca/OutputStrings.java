@@ -4,7 +4,9 @@ public class OutputStrings
 {
     public static final String WELCOME_MESSAGE = "Welcome to Biblioteca.";
     public static final String OPTIONS = "Options:";
-    public static final String OPTIONS_LIST_BOOKS = "  1) List Books";
+    public static final String OPTIONS_LIST_BOOKS = "  1) List books";
+    public static final String OPTIONS_QUIT = "  2) Quit";
+    public static final String OPTIONS_CHECK_OUT_BOOK = "  3) Check out book";
     public static final String INVALID_MENU_OPTION_SELECTED = "Select a valid option!";
 
     public static final String TABLE_HEADER = "====================================";

@@ -26,4 +26,11 @@ public class MainMenuOptionTest
         MainMenuOption menuOption = MainMenuOption.getMainMenuOption(MainMenuOption.QUIT);
         Assert.assertThat(menuOption, new IsInstanceOf(QuitOption.class));
     }
+
+    @Test
+    public void testMainMenuOptionCheckOutBook()
+    {
+        MainMenuOption menuOption = MainMenuOption.getMainMenuOption(MainMenuOption.CHECK_OUT_BOOK);
+        Assert.assertThat(menuOption, new IsInstanceOf(CheckOutBookOption.class));
+    }
 }
