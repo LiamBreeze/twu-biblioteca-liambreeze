@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class ReturnBookOption extends MainMenuOption
 {
+
     @Override
     public String getOptionType()
     {
@@ -24,6 +25,10 @@ public class ReturnBookOption extends MainMenuOption
             bookList.add(book);
 
             System.out.println(OutputStrings.BOOK_RETURN_SUCCESS_MESSAGE);
+        }
+        else
+        {
+            System.out.println(OutputStrings.BOOK_RETURN_UNSUCCESSFUL_MESSAGE);
         }
 
         return false;

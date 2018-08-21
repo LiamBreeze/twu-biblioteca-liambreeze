@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -11,46 +12,66 @@ public class ReturnBookOptionTest
     @Rule
     public final ConsoleTestRule consoleMock = new ConsoleTestRule();
 
+    private ReturnBookOption returnBookOption;
+
+    @Before
+    public void setUp()
+    {
+        returnBookOption = new ReturnBookOption();
+    }
+
     @Test
     public void testReturningNoBooksHasNoEffectOnBookList()
     {
-        int numberOfTestBooks = 2;
         String[] userInput = {};
+        ArrayList<Book> testBookList = buildBookList(1);
+        ArrayList<Book> checkedOutBookList = buildBookList(2);
 
-        testReturnBook(numberOfTestBooks, userInput, buildBookList(2));
+        runReturnBookTest(userInput, testBookList, checkedOutBookList);
+
+        ArrayList<Book> expectedBookList = buildBookList(1);
+        Assert.assertEquals(expectedBookList, testBookList);
     }
 
     @Test
     public void testReturningOneBookAppearsOnBookList()
     {
-        int numberOfTestBooks = 1;
         String[] userInput = {"Book2", "Author2", "2002"};
+        ArrayList<Book> testBookList = buildBookList(1);
+        ArrayList<Book> checkedOutBookList = buildBookList(2);
 
-        testReturnBook(numberOfTestBooks, userInput, buildBookList(2));
+        runReturnBookTest(userInput, testBookList, checkedOutBookList);
+
+        ArrayList<Book> expectedBookList = buildBookList(2);
+        Assert.assertEquals(expectedBookList, testBookList);
     }
 
     @Test
     public void testReturningMultipleBooks()
     {
-        int numberOfTestBooks = 2;
         String[] userInput =
                 {
                         "Book3", "Author3", "2003",
                         "Book4", "Author4", "2004",
                         "Book5", "Author5", "2005",
                 };
+        ArrayList<Book> testBookList = buildBookList(2);
+        ArrayList<Book> checkedOutBookList = buildBookList(5);
 
-        testReturnBook(numberOfTestBooks, userInput, buildBookList(5));
+        runReturnBookTest(userInput, testBookList, checkedOutBookList);
+
+        ArrayList<Book> expectedBookList = buildBookList(5);
+        Assert.assertEquals(expectedBookList, testBookList);
     }
 
     @Test
-    public void testSuccessfullyReturningBook()
+    public void testSuccessfullyReturningBookMessage()
     {
-        consoleMock.addUserInputSequence(new String[]{ "Book2", "Author2", "2002" });
+        String[] userInput = {"Book2", "Author2", "2002"};
+        ArrayList<Book> testBookList = new ArrayList<Book>();
+        ArrayList<Book> checkedOutBookList = buildBookList(2);
 
-        ReturnBookOption option = new ReturnBookOption();
-
-        Assert.assertFalse(option.select(buildBookList(2), buildBookList(2)));
+        runReturnBookTest(userInput, testBookList, checkedOutBookList);
 
         String[] expectedOutput = new String[]
                 {
@@ -59,21 +80,30 @@ public class ReturnBookOptionTest
         consoleMock.assertSTDOutContains(expectedOutput, 0);
     }
 
-    private void testReturnBook(int numberOfBooksRequested, String[] userInput, ArrayList<Book> expectedBookList)
+    @Test
+    public void testUnsuccessfullyReturningBookMessage()
     {
-        ArrayList<Book> testBookList = buildBookList(numberOfBooksRequested);
-        ArrayList<Book> checkedOutBookList = buildBookList(expectedBookList.size());
+        String[] userInput = {"Book2", "Author2", "2002"};
+        ArrayList<Book> testBookList = new ArrayList<Book>();
+        ArrayList<Book> checkedOutBookList = buildBookList(1);
 
-        MainMenu returnBookOption = new MainMenu(testBookList, checkedOutBookList);
+        runReturnBookTest(userInput, testBookList, checkedOutBookList);
 
+        String[] expectedOutput = new String[]
+                {
+                        "That is not a valid book to return"
+                };
+        consoleMock.assertSTDOutContains(expectedOutput, 0);
+    }
+
+    private void runReturnBookTest(String[] userInput, ArrayList<Book> testBookList, ArrayList<Book> checkedOutBookList)
+    {
         consoleMock.addUserInputSequence(userInput);
 
         for (int testCount = 0; testCount < userInput.length; testCount += 3)
         {
-            Assert.assertFalse(returnBookOption.selectOption(MainMenuOption.RETURN_BOOK));
+            Assert.assertFalse(returnBookOption.select(testBookList, checkedOutBookList));
         }
-
-        Assert.assertEquals(expectedBookList, testBookList);
     }
 
     private ArrayList<Book> buildBookList(int numberOfBooksRequested)
