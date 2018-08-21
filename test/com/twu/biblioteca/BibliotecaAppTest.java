@@ -63,6 +63,6 @@ public class BibliotecaAppTest
                         "Select a valid option!",
                 };
 
-        consoleMock.assertSTDOutContains(expectedMessage, 10);
+        consoleMock.assertSTDOutContains(expectedMessage, 17);
     }
 }

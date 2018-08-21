@@ -23,8 +23,6 @@ public class BibliotecaApp
     {
         System.out.println();
         printWelcomeMessage();
-        System.out.println();
-        System.out.println(mainMenu);
         handleUserSelection();
     }
 
@@ -36,6 +34,9 @@ public class BibliotecaApp
 
         while (!isQuitSelected)
         {
+            System.out.println();
+            System.out.println(mainMenu);
+
             if (userInputScanner.hasNext())
             {
                 String userOptionSelection = userInputScanner.next();
