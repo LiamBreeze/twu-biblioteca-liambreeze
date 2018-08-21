@@ -17,14 +17,14 @@ public class MainMenu
         stringBuilder.append(OutputStrings.OPTIONS);
         stringBuilder.append(OutputStrings.NEW_LINE_SEPARATOR);
 
-        stringBuilder.append(OutputStrings.OPTIONS_LIST_BOOKS);
-        stringBuilder.append(OutputStrings.NEW_LINE_SEPARATOR);
-        stringBuilder.append(OutputStrings.OPTIONS_QUIT);
-        stringBuilder.append(OutputStrings.NEW_LINE_SEPARATOR);
-        stringBuilder.append(OutputStrings.OPTIONS_CHECK_OUT_BOOK);
-        stringBuilder.append(OutputStrings.NEW_LINE_SEPARATOR);
-        stringBuilder.append(OutputStrings.OPTIONS_RETURN_BOOK);
-        stringBuilder.append(OutputStrings.NEW_LINE_SEPARATOR);
+        for (String option : MainMenuOption.getOptionsList())
+        {
+            stringBuilder.append("  ");
+            stringBuilder.append(option);
+            stringBuilder.append(") ");
+            stringBuilder.append(MainMenuOption.create(option));
+            stringBuilder.append(OutputStrings.NEW_LINE_SEPARATOR);
+        }
 
         return stringBuilder.toString();
     }

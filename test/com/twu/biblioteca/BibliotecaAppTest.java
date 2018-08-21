@@ -20,7 +20,7 @@ public class BibliotecaAppTest
     @Test
     public void testAppDisplaysWelcomeMessageOnStartup()
     {
-        consoleMock.addUserInputSequence(new String[]{"2"});
+        consoleMock.addUserInputSequence(new String[]{MainMenuOption.QUIT});
 
         bibliotecaApp.start();
 
@@ -35,7 +35,7 @@ public class BibliotecaAppTest
     @Test
     public void testAppDisplaysOptionsOnStartup()
     {
-        consoleMock.addUserInputSequence(new String[]{"2"});
+        consoleMock.addUserInputSequence(new String[]{MainMenuOption.QUIT});
 
         bibliotecaApp.start();
 
@@ -43,9 +43,9 @@ public class BibliotecaAppTest
                 {
                         "Options:",
                         "  1) List books",
-                        "  2) Quit",
-                        "  3) Checkout book",
-                        "  4) Return book",
+                        "  2) Checkout book",
+                        "  3) Return book",
+                        "  4) Quit",
                 };
 
         consoleMock.assertSTDOutContains(expectedOptionsString, 3);
@@ -54,7 +54,10 @@ public class BibliotecaAppTest
     @Test
     public void testReEnteringMainMenuSelection()
     {
-        consoleMock.addUserInputSequence(new String[]{"0", "0", "2"});
+        consoleMock.addUserInputSequence(new String[]
+                {
+                        "-", "-", MainMenuOption.QUIT
+                });
 
         bibliotecaApp.start();
 

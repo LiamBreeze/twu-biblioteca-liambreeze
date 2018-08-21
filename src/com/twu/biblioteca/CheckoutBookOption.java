@@ -14,4 +14,10 @@ public class CheckoutBookOption extends MainMenuOption
         library.checkoutBook(getBookFromUser());
         return false;
     }
+
+    @Override
+    public String toString()
+    {
+        return OutputStrings.OPTIONS_CHECK_OUT_BOOK;
+    }
 }

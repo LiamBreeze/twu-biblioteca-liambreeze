@@ -15,4 +15,10 @@ public class ListBooksOption extends MainMenuOption
 
         return false;
     }
+
+    @Override
+    public String toString()
+    {
+        return OutputStrings.OPTIONS_LIST_BOOKS;
+    }
 }

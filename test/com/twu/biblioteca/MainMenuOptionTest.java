@@ -13,9 +13,9 @@ public class MainMenuOptionTest
         ArrayList<String[]> testData = new ArrayList<String[]>();
         testData.add(new String[]{"", MainMenuOption.INVALID});
         testData.add(new String[]{"1", MainMenuOption.LIST_BOOKS});
-        testData.add(new String[]{"2", MainMenuOption.QUIT});
-        testData.add(new String[]{"3", MainMenuOption.CHECKOUT_BOOK});
-        testData.add(new String[]{"4", MainMenuOption.RETURN_BOOK});
+        testData.add(new String[]{"2", MainMenuOption.CHECKOUT_BOOK});
+        testData.add(new String[]{"3", MainMenuOption.RETURN_BOOK});
+        testData.add(new String[]{"4", MainMenuOption.QUIT});
 
 
         for (String[] data : testData)

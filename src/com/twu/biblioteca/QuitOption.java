@@ -13,4 +13,10 @@ public class QuitOption extends MainMenuOption
     {
         return true;
     }
+
+    @Override
+    public String toString()
+    {
+        return OutputStrings.OPTIONS_QUIT;
+    }
 }

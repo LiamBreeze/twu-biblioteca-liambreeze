@@ -93,7 +93,7 @@ public class ReturnBookOptionTest
                 {
                         "That is not a valid book to return"
                 };
-        consoleMock.assertSTDOutContains(expectedOutput, 0);
+        consoleMock.assertSTDOutContains(expectedOutput, 1);
     }
 
     private void assertAvailableBooks(ArrayList<Book> books)
@@ -121,7 +121,7 @@ public class ReturnBookOptionTest
                 {
                         "Thank you for returning the book",
                 };
-        consoleMock.assertSTDOutContains(expectedOutput, 0);
+        consoleMock.assertSTDOutContains(expectedOutput, 1);
     }
 
     private void runReturnBookTest(String[] userInput)

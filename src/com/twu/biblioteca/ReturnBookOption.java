@@ -15,4 +15,10 @@ public class ReturnBookOption extends MainMenuOption
         library.returnBook(getBookFromUser());
         return false;
     }
+
+    @Override
+    public String toString()
+    {
+        return OutputStrings.OPTIONS_RETURN_BOOK;
+    }
 }
