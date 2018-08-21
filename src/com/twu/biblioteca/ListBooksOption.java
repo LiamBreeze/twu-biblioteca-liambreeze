@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
-
 public class ListBooksOption extends MainMenuOption
 {
     @Override
@@ -11,15 +9,9 @@ public class ListBooksOption extends MainMenuOption
     }
 
     @Override
-    public boolean select(ArrayList<Book> bookList, ArrayList<Book> checkedOutBookList)
+    public boolean select(Library library)
     {
-        return listBooks(bookList);
-    }
-
-    private boolean listBooks(ArrayList<Book> bookList)
-    {
-        BookListPrinter bookListPrinter = new BookListPrinter();
-        bookListPrinter.printBookList(bookList);
+        library.listAvailableBooks();
 
         return false;
     }

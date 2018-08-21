@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
-
 public class InvalidOption extends MainMenuOption
 {
     @Override
@@ -11,7 +9,7 @@ public class InvalidOption extends MainMenuOption
     }
 
     @Override
-    public boolean select(ArrayList<Book> bookList, ArrayList<Book> checkedOutBookList)
+    public boolean select(Library library)
     {
         System.out.println(OutputStrings.INVALID_MENU_OPTION_SELECTED);
 

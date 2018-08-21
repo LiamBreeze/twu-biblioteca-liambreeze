@@ -47,4 +47,9 @@ public class ConsoleTestRule implements TestRule
             }
         };
     }
+
+    public void clearSTDOut()
+    {
+        systemOutMock.clearLog();
+    }
 }

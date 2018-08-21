@@ -5,33 +5,26 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 public class CheckoutBookOptionTest
 {
     @Rule
     public final ConsoleTestRule consoleMock = new ConsoleTestRule();
 
-    private ArrayList<Book> bookList;
-    private MainMenu checkOutBookOption;
+    private CheckoutBookOption checkOutBookOption;
+    private Library testLibrary;
 
     @Before
     public void setUp()
     {
-        bookList = new ArrayList<Book>();
-        bookList.add(new Book("Book1", "Author1", 2001));
-        bookList.add(new Book("Book2", "Author2", 2002));
-
-        ArrayList<Book> checkOutBookList = new ArrayList<Book>();
-
-        checkOutBookOption = new MainMenu(bookList, checkOutBookList);
+        checkOutBookOption = new CheckoutBookOption();
+        testLibrary = new Library();
     }
 
     @Test
     public void testCheckedOutBooksAreNotListed()
     {
         selectBook("Book1", "Author1", "2001");
-        Assert.assertFalse(checkOutBookOption.selectOption(MainMenuOption.CHECKOUT_BOOK));
+        Assert.assertFalse(checkOutBookOption.select(testLibrary));
         assertBookWasRemoved();
     }
 
@@ -39,7 +32,7 @@ public class CheckoutBookOptionTest
     public void testSuccessfulBookCheckoutMessage()
     {
         selectBook("Book1", "Author1", "2001");
-        Assert.assertFalse(checkOutBookOption.selectOption(MainMenuOption.CHECKOUT_BOOK));
+        Assert.assertFalse(checkOutBookOption.select(testLibrary));
         assertSuccessMessageWasPrinted();
     }
 
@@ -47,7 +40,7 @@ public class CheckoutBookOptionTest
     public void testUnsuccessfulBookCheckoutMessage()
     {
         selectBook("Book3", "Author3", "2003");
-        Assert.assertFalse(checkOutBookOption.selectOption(MainMenuOption.CHECKOUT_BOOK));
+        Assert.assertFalse(checkOutBookOption.select(testLibrary));
         assertUnsuccessfulMessageWasPrinted();
     }
 
@@ -63,10 +56,13 @@ public class CheckoutBookOptionTest
 
     private void assertBookWasRemoved()
     {
-        ArrayList<Book> expectedBookList = new ArrayList<Book>();
-        expectedBookList.add(new Book("Book2", "Author2", 2002));
+        testLibrary.listAvailableBooks();
 
-        Assert.assertEquals(expectedBookList, bookList);
+        String[] outputWithoutBook1 = new String[]
+                {
+                        "| Book2 | Author2 |           2002 |"
+                };
+        consoleMock.assertSTDOutContains(outputWithoutBook1, 4);
     }
 
     private void assertSuccessMessageWasPrinted()

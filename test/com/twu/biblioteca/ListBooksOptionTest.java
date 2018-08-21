@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 public class ListBooksOptionTest
 {
     @Rule
@@ -14,9 +12,9 @@ public class ListBooksOptionTest
     @Test
     public void testListBooksDisplaysBooks()
     {
-        MainMenu listBooksOption = new MainMenu(new ArrayList<Book>(), null);
+        ListBooksOption listBooksOption = new ListBooksOption();
 
-        Assert.assertFalse(listBooksOption.selectOption(MainMenuOption.LIST_BOOKS));
+        Assert.assertFalse(listBooksOption.select(new Library()));
 
         String[] listBooksString = new String[]
                 {

@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class MainMenuOption
@@ -12,8 +11,6 @@ public abstract class MainMenuOption
     public static final String INVALID = "";
 
     public abstract String getOptionType();
-
-    public abstract boolean select(ArrayList<Book> bookList, ArrayList<Book> checkedOutBookList);
 
     public static MainMenuOption create(String type)
     {
@@ -54,4 +51,6 @@ public abstract class MainMenuOption
 
         return book;
     }
+
+    public abstract boolean select(Library library);
 }

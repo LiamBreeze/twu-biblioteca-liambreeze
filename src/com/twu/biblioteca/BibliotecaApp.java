@@ -1,12 +1,11 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BibliotecaApp
 {
-    private ArrayList<Book> bookList;
     private MainMenu mainMenu;
+    private Library library;
 
     public static void main(String[] args)
     {
@@ -16,13 +15,8 @@ public class BibliotecaApp
 
     public BibliotecaApp()
     {
-        bookList = new ArrayList<Book>();
-        bookList.add(new Book("Book1", "Author1", 2001));
-        bookList.add(new Book("Book2", "Author2", 2002));
-
-        ArrayList<Book> checkedOutBookList = new ArrayList<Book>();
-
-        mainMenu = new MainMenu(bookList, checkedOutBookList);
+        library = new Library();
+        mainMenu = new MainMenu();
     }
 
     public void start()
@@ -45,7 +39,7 @@ public class BibliotecaApp
             if (userInputScanner.hasNext())
             {
                 String userOptionSelection = userInputScanner.next();
-                isQuitSelected = mainMenu.selectOption(userOptionSelection);
+                isQuitSelected = mainMenu.selectOption(library, userOptionSelection);
             }
         }
     }

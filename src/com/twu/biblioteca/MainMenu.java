@@ -1,23 +1,12 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
-
 public class MainMenu
 {
-    private final ArrayList<Book> bookList;
-    private ArrayList<Book> checkedOutBookList;
-
-    public MainMenu(ArrayList<Book> bookList, ArrayList<Book> checkedOutBookList)
-    {
-        this.bookList = bookList;
-        this.checkedOutBookList = checkedOutBookList;
-    }
-
-    public boolean selectOption(String userOptionSelection)
+    public boolean selectOption(Library library, String userOptionSelection)
     {
         MainMenuOption selectedOption = MainMenuOption.create(userOptionSelection);
 
-        return selectedOption.select(bookList, checkedOutBookList);
+        return selectedOption.select(library);
     }
 
     @Override
