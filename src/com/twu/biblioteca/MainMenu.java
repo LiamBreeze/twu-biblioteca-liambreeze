@@ -5,17 +5,19 @@ import java.util.ArrayList;
 public class MainMenu
 {
     private final ArrayList<Book> bookList;
+    private ArrayList<Book> checkedOutBookList;
 
-    public MainMenu(ArrayList<Book> bookList)
+    public MainMenu(ArrayList<Book> bookList, ArrayList<Book> checkedOutBookList)
     {
         this.bookList = bookList;
+        this.checkedOutBookList = checkedOutBookList;
     }
 
     public boolean selectOption(String userOptionSelection)
     {
         MainMenuOption selectedOption = MainMenuOption.create(userOptionSelection);
 
-        return selectedOption.select(bookList);
+        return selectedOption.select(bookList, checkedOutBookList);
     }
 
     @Override

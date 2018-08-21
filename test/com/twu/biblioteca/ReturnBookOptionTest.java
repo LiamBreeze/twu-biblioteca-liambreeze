@@ -43,11 +43,28 @@ public class ReturnBookOptionTest
         testReturnBook(numberOfTestBooks, userInput, buildBookList(5));
     }
 
+    @Test
+    public void testSuccessfullyReturningBook()
+    {
+        consoleMock.addUserInputSequence(new String[]{ "Book2", "Author2", "2002" });
+
+        ReturnBookOption option = new ReturnBookOption();
+
+        Assert.assertFalse(option.select(buildBookList(2), buildBookList(2)));
+
+        String[] expectedOutput = new String[]
+                {
+                        "Thank you for returning the book",
+                };
+        consoleMock.assertSTDOutContains(expectedOutput, 0);
+    }
+
     private void testReturnBook(int numberOfBooksRequested, String[] userInput, ArrayList<Book> expectedBookList)
     {
         ArrayList<Book> testBookList = buildBookList(numberOfBooksRequested);
+        ArrayList<Book> checkedOutBookList = buildBookList(expectedBookList.size());
 
-        MainMenu returnBookOption = new MainMenu(testBookList);
+        MainMenu returnBookOption = new MainMenu(testBookList, checkedOutBookList);
 
         consoleMock.addUserInputSequence(userInput);
 

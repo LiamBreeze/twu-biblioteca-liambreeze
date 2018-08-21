@@ -11,16 +11,19 @@ public class ReturnBookOption extends MainMenuOption
     }
 
     @Override
-    public boolean select(ArrayList<Book> bookList)
+    public boolean select(ArrayList<Book> bookList, ArrayList<Book> checkedOutBookList)
     {
-        return returnBook(bookList, getBookFromUser());
+        return returnBook(bookList, getBookFromUser(), checkedOutBookList);
     }
 
-    private boolean returnBook(ArrayList<Book> bookList, Book book)
+    private boolean returnBook(ArrayList<Book> bookList, Book book, ArrayList<Book> checkedOutBookList)
     {
-        if (book != null)
+        if (book != null && checkedOutBookList.contains(book))
         {
+            checkedOutBookList.remove(book);
             bookList.add(book);
+
+            System.out.println(OutputStrings.BOOK_RETURN_SUCCESS_MESSAGE);
         }
 
         return false;

@@ -11,7 +11,7 @@ public class InvalidOption extends MainMenuOption
     }
 
     @Override
-    public boolean select(ArrayList<Book> bookList)
+    public boolean select(ArrayList<Book> bookList, ArrayList<Book> checkedOutBookList)
     {
         System.out.println(OutputStrings.INVALID_MENU_OPTION_SELECTED);
 

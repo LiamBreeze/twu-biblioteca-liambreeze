@@ -13,7 +13,7 @@ public abstract class MainMenuOption
 
     public abstract String getOptionType();
 
-    public abstract boolean select(ArrayList<Book> bookList);
+    public abstract boolean select(ArrayList<Book> bookList, ArrayList<Book> checkedOutBookList);
 
     public static MainMenuOption create(String type)
     {

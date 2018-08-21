@@ -11,7 +11,7 @@ public class QuitOption extends MainMenuOption
     }
 
     @Override
-    public boolean select(ArrayList<Book> bookList)
+    public boolean select(ArrayList<Book> bookList, ArrayList<Book> checkedOutBookList)
     {
         return true;
     }

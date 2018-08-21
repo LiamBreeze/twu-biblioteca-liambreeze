@@ -22,7 +22,9 @@ public class CheckoutBookOptionTest
         bookList.add(new Book("Book1", "Author1", 2001));
         bookList.add(new Book("Book2", "Author2", 2002));
 
-        checkOutBookOption = new MainMenu(bookList);
+        ArrayList<Book> checkOutBookList = new ArrayList<Book>();
+
+        checkOutBookOption = new MainMenu(bookList, checkOutBookList);
     }
 
     @Test

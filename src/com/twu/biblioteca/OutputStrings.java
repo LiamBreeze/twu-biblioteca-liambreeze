@@ -11,6 +11,7 @@ public class OutputStrings
     public static final String INVALID_MENU_OPTION_SELECTED = "Select a valid option!";
     public static final String CHECK_OUT_BOOK_SUCCESS_MESSAGE = "Thank you! Enjoy the book";
     public static final String CHECK_OUT_BOOK_UNSUCCESSFUL_MESSAGE = "That book is not available";
+    public static final String BOOK_RETURN_SUCCESS_MESSAGE = "Thank you for returning the book";
 
     public static final String TABLE_HEADER = "====================================";
     public static final String TABLE_ROW_SEPARATOR = "------------------------------------";

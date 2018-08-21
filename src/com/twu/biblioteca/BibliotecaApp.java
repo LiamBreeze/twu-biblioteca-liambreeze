@@ -20,7 +20,9 @@ public class BibliotecaApp
         bookList.add(new Book("Book1", "Author1", 2001));
         bookList.add(new Book("Book2", "Author2", 2002));
 
-        mainMenu = new MainMenu(bookList);
+        ArrayList<Book> checkedOutBookList = new ArrayList<Book>();
+
+        mainMenu = new MainMenu(bookList, checkedOutBookList);
     }
 
     public void start()
