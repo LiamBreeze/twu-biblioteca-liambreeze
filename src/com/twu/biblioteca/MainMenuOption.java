@@ -87,9 +87,10 @@ public abstract class MainMenuOption
         return book;
     }
 
-    protected String getUserUsername(Scanner input)
+    protected String getUserUsername()
     {
         String username = null;
+        Scanner input = new Scanner(System.in);
 
         System.out.print("Username: ");
         if (input.hasNext())
@@ -100,9 +101,10 @@ public abstract class MainMenuOption
         return username;
     }
 
-    protected String getUserPassword(Scanner input)
+    protected String getUserPassword()
     {
         String password = null;
+        Scanner input = new Scanner(System.in);
 
         System.out.print("Password: ");
         if (input.hasNext())

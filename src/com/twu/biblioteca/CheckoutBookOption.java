@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.Scanner;
-
 public class CheckoutBookOption extends MainMenuOption
 {
     @Override
@@ -13,11 +11,8 @@ public class CheckoutBookOption extends MainMenuOption
     @Override
     public boolean select(Library library)
     {
-        Scanner userInputScanner = new Scanner(System.in);
-
-        String username = getUserUsername(userInputScanner);
-        String password = getUserPassword(userInputScanner);
-
+        String username = getUserUsername();
+        String password = getUserPassword();
         System.out.println();
 
         library.checkoutBook(username, password, getBookFromUser());
