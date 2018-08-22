@@ -16,13 +16,5 @@ public class OutputStrings
     public static final String REQUEST_BOOK_TITLE = "Book title: ";
     public static final String REQUEST_BOOK_AUTHOR = "Book author: ";
     public static final String REQUEST_BOOK_PUBLISHING_YEAR = "Book publishing year: ";
-
-    public static final String TABLE_HEADER = "====================================";
-    public static final String TABLE_ROW_SEPARATOR = "------------------------------------";
-    public static final String TABLE_COLUMN_SEPARATOR = "|";
-    public static final String SPACE = " ";
-    public static final String TITLE = "Title";
-    public static final String AUTHOR = "Author";
-    public static final String YEAR_PUBLISHED = "Year Published";
     public static final String NEW_LINE_SEPARATOR = System.getProperty("line.separator");
 }

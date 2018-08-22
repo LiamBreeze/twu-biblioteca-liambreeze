@@ -52,5 +52,7 @@ public class Library
 
     public void listAvailableMovies()
     {
+        MovieListPrinter movieListPrinter = new MovieListPrinter();
+        movieListPrinter.printMovieList();
     }
 }

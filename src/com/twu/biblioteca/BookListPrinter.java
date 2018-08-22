@@ -4,13 +4,37 @@ import java.util.ArrayList;
 
 public class BookListPrinter
 {
+    public static final int TABLE_WIDTH = 36;
+
+    public static final String TITLE = "Title";
+    public static final String AUTHOR = "Author";
+    public static final String YEAR_PUBLISHED = "Year Published";
+
+
+    private final TablePrinter tablePrinter;
+
+    public BookListPrinter()
+    {
+        this.tablePrinter = new TablePrinter(TABLE_WIDTH);
+    }
+
     public void printBookList(ArrayList<Book> bookList)
     {
-        System.out.println(OutputStrings.TABLE_HEADER);
+        tablePrinter.printHeading();
         printTableTitle();
-        System.out.println(OutputStrings.TABLE_ROW_SEPARATOR);
+        tablePrinter.printRowSeparator();
         printBooks(bookList);
-        System.out.println(OutputStrings.TABLE_HEADER);
+        tablePrinter.printHeading();
+    }
+
+    private void printTableTitle()
+    {
+        tablePrinter.printTableEntry(TITLE);
+        tablePrinter.printTableEntry(AUTHOR);
+        tablePrinter.printSpaces(1);
+        tablePrinter.printTableEntry(YEAR_PUBLISHED);
+        tablePrinter.printColumnSeparator();
+        tablePrinter.printNewLine();
     }
 
     private void printBooks(ArrayList<Book> bookList)
@@ -21,63 +45,13 @@ public class BookListPrinter
         }
     }
 
-    private void printTableTitle()
-    {
-        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
-        printSpaces(1);
-
-        System.out.print(OutputStrings.TITLE);
-
-        printSpaces(1);
-        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
-        printSpaces(1);
-
-        System.out.print(OutputStrings.AUTHOR);
-
-        printSpaces(1);
-        printSpaces(1);
-        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
-        printSpaces(1);
-
-        System.out.print(OutputStrings.YEAR_PUBLISHED);
-
-        printSpaces(1);
-        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
-
-        System.out.println();
-    }
-
     private void printBook(Book book)
     {
-        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
-        printSpaces(1);
-
-        System.out.print(book.getTitle());
-
-        printSpaces(1);
-        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
-        printSpaces(1);
-
-        System.out.print(book.getAuthor());
-
-        printSpaces(1);
-        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
-        printSpaces(11);
-
-        System.out.print(book.getPublishingYear());
-
-        printSpaces(1);
-        System.out.print(OutputStrings.TABLE_COLUMN_SEPARATOR);
-
-        System.out.println();
-    }
-
-    private void printSpaces(int numberOfSpaces)
-    {
-        for (int spaceNumber = 0; spaceNumber < numberOfSpaces; spaceNumber++)
-        {
-            System.out.print(OutputStrings.SPACE);
-        }
+        tablePrinter.printTableEntry(book.getTitle());
+        tablePrinter.printTableEntry(book.getAuthor());
+        tablePrinter.printTableEntryWithLeftPadding(Integer.toString(book.getPublishingYear()), 11);
+        tablePrinter.printColumnSeparator();
+        tablePrinter.printNewLine();
     }
 
 }
