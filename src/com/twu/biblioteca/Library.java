@@ -45,9 +45,13 @@ public class Library
         bookListPrinter.printBookList(availableBooks);
     }
 
-    public void returnBook(Book book)
+    public void returnBook(String username, String password, Book book)
     {
-        if (book != null && checkedOutBooks.contains(book))
+        UserLoginManager userLoginManager = new UserLoginManager();
+
+        if (userLoginManager.loginUser(username, password) &&
+                book != null &&
+                checkedOutBooks.contains(book))
         {
             checkedOutBooks.remove(book);
             availableBooks.add(book);

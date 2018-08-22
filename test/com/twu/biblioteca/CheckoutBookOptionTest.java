@@ -48,7 +48,7 @@ public class CheckoutBookOptionTest
     {
         consoleMock.addUserInputSequence(new String[]
                 {
-                        "username",
+                        "xxx-xxxx",
                         "password",
                         title,
                         author,

@@ -13,7 +13,7 @@ public class UserLoginManagerTest
     {
         UserLoginManager testUserLoginManager = new UserLoginManager();
 
-        String validUsername = "username";
+        String validUsername = "xxx-xxxx";
         String validPassword = "password";
         Assert.assertTrue(testUserLoginManager.loginUser(validUsername, validPassword));
 

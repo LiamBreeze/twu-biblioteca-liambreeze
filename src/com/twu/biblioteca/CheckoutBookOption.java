@@ -24,32 +24,6 @@ public class CheckoutBookOption extends MainMenuOption
         return false;
     }
 
-    private static String getUserUsername(Scanner input)
-    {
-        String username = null;
-
-        System.out.print("Username: ");
-        if (input.hasNext())
-        {
-            username = input.next();
-        }
-
-        return username;
-    }
-
-    private static String getUserPassword(Scanner input)
-    {
-        String password = null;
-
-        System.out.print("Password: ");
-        if (input.hasNext())
-        {
-            password = input.next();
-        }
-
-        return password;
-    }
-
     @Override
     public String toString()
     {

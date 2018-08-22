@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.Scanner;
+
 public class ReturnBookOption extends MainMenuOption
 {
 
@@ -12,7 +14,14 @@ public class ReturnBookOption extends MainMenuOption
     @Override
     public boolean select(Library library)
     {
-        library.returnBook(getBookFromUser());
+        Scanner userInputScanner = new Scanner(System.in);
+
+        String username = getUserUsername(userInputScanner);
+        String password = getUserPassword(userInputScanner);
+
+        System.out.println();
+
+        library.returnBook(username, password, getBookFromUser());
         return false;
     }
 

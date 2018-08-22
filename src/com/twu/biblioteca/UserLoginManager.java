@@ -11,7 +11,7 @@ public class UserLoginManager
     {
         return username != null &&
                 password != null &&
-                username.equals("username") &&
+                username.equals("xxx-xxxx") &&
                 password.equals("password");
     }
 }

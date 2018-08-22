@@ -23,6 +23,8 @@ public abstract class MainMenuOption
 
     public abstract String getOptionType();
 
+    public abstract boolean select(Library library);
+
     public static MainMenuOption create(String type)
     {
         MainMenuOption option = new InvalidOption();
@@ -80,5 +82,29 @@ public abstract class MainMenuOption
         return book;
     }
 
-    public abstract boolean select(Library library);
+    protected String getUserUsername(Scanner input)
+    {
+        String username = null;
+
+        System.out.print("Username: ");
+        if (input.hasNext())
+        {
+            username = input.next();
+        }
+
+        return username;
+    }
+
+    protected String getUserPassword(Scanner input)
+    {
+        String password = null;
+
+        System.out.print("Password: ");
+        if (input.hasNext())
+        {
+            password = input.next();
+        }
+
+        return password;
+    }
 }

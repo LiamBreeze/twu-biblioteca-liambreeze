@@ -49,6 +49,7 @@ public class ReturnBookOptionTest
         String[] userInput =
                 {
                         "Book1", "Author1", "2001",
+                        "xxx-xxxx", "password",
                         "Book2", "Author2", "2002",
                 };
 
@@ -68,7 +69,7 @@ public class ReturnBookOptionTest
         String[] userInput = {"Book2", "Author2", "2002"};
 
         Book checkedOutBook = new Book("Book2", "Author2", 2002);
-        testLibrary.checkoutBook("username", "password", checkedOutBook);
+        testLibrary.checkoutBook("xxx-xxxx", "password", checkedOutBook);
 
         consoleMock.clearSTDOut();
 
@@ -93,7 +94,7 @@ public class ReturnBookOptionTest
                 {
                         "That is not a valid book to return"
                 };
-        consoleMock.assertSTDOutContains(expectedOutput, 1);
+        consoleMock.assertSTDOutContains(expectedOutput, 2);
     }
 
     private void assertAvailableBooks(ArrayList<Book> books)
@@ -121,12 +122,21 @@ public class ReturnBookOptionTest
                 {
                         "Thank you for returning the book",
                 };
-        consoleMock.assertSTDOutContains(expectedOutput, 1);
+        consoleMock.assertSTDOutContains(expectedOutput, 2);
     }
 
     private void runReturnBookTest(String[] userInput)
     {
-        consoleMock.addUserInputSequence(userInput);
+        String[] userInputWithUsernameAndPassword = new String[userInput.length + 2];
+        userInputWithUsernameAndPassword[0] = "xxx-xxxx";
+        userInputWithUsernameAndPassword[1] = "password";
+
+        for (int index = 0; index < userInput.length; index++)
+        {
+            userInputWithUsernameAndPassword[index + 2] = userInput[index];
+        }
+
+        consoleMock.addUserInputSequence(userInputWithUsernameAndPassword);
 
         for (int testCount = 0; testCount < userInput.length; testCount += 3)
         {
