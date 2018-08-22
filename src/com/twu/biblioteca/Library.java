@@ -53,8 +53,14 @@ public class Library
     public void listAvailableMovies()
     {
         ArrayList<Movie> availableMovies = new ArrayList<Movie>();
+        availableMovies.add(new Movie("Movie0", 2000, "Director0"));
 
         MovieListPrinter movieListPrinter = new MovieListPrinter();
         movieListPrinter.printMovieList(availableMovies);
+    }
+
+    public void checkoutMovie(Movie testMovieNotInLibrary)
+    {
+
     }
 }
