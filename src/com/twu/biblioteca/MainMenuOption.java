@@ -9,7 +9,8 @@ public abstract class MainMenuOption
     public static final String RETURN_BOOK = "3";
     public static final String LIST_MOVIES = "4";
     public static final String CHECKOUT_MOVIE = "5";
-    public static final String QUIT = "6";
+    public static final String USER_INFORMATION = "6";
+    public static final String QUIT = "7";
     public static final String INVALID = "";
 
     public static final String[] OPTION_LIST = {
@@ -18,6 +19,7 @@ public abstract class MainMenuOption
             RETURN_BOOK,
             LIST_MOVIES,
             CHECKOUT_MOVIE,
+            USER_INFORMATION,
             QUIT,
     };
 
@@ -47,6 +49,9 @@ public abstract class MainMenuOption
         } else if (type.equals(CHECKOUT_MOVIE))
         {
             option = new CheckoutMovieOption();
+        } else if (type.equals(USER_INFORMATION))
+        {
+            option = new UserInformationOption();
         }
 
         return option;
