@@ -6,6 +6,7 @@ public class Library
 {
     private final ArrayList<Book> availableBooks;
     private final ArrayList<Book> checkedOutBooks;
+    private ArrayList<Movie> availableMovies;
 
     public Library()
     {
@@ -14,6 +15,11 @@ public class Library
         availableBooks.add(new Book("Book2", "Author2", 2002));
 
         checkedOutBooks = new ArrayList<Book>();
+
+        availableMovies = new ArrayList<Movie>();
+        availableMovies.add(new Movie("Movie0", 2000, "Director0"));
+        availableMovies.add(new Movie("Movie1", 2001, "Director1", 1));
+        availableMovies.add(new Movie("Movie2", 2002, "Director2", 10));
     }
 
     public void checkoutBook(Book book)
@@ -52,15 +58,15 @@ public class Library
 
     public void listAvailableMovies()
     {
-        ArrayList<Movie> availableMovies = new ArrayList<Movie>();
-        availableMovies.add(new Movie("Movie0", 2000, "Director0"));
-
         MovieListPrinter movieListPrinter = new MovieListPrinter();
         movieListPrinter.printMovieList(availableMovies);
     }
 
-    public void checkoutMovie(Movie testMovieNotInLibrary)
+    public void checkoutMovie(Movie movie)
     {
-
+        if (availableMovies.contains(movie))
+        {
+            availableMovies.remove(movie);
+        }
     }
 }

@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.Objects;
+
 public class Movie
 {
     private String title;
@@ -50,5 +52,32 @@ public class Movie
     public boolean hasRating()
     {
         return rating > 0 && rating < 11;
+    }
+
+    @Override
+    public boolean equals(Object other)
+    {
+        if (this == other)
+        {
+            return true;
+        }
+
+        if (other == null || getClass() != other.getClass())
+        {
+            return false;
+        }
+
+        Movie movie = (Movie) other;
+
+        return releaseYear == movie.releaseYear &&
+                rating == movie.rating &&
+                title.equals(movie.title) &&
+                director.equals(movie.director);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return title.hashCode() + releaseYear + director.hashCode() + rating;
     }
 }
