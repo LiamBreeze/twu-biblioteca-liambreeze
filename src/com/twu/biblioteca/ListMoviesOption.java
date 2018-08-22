@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 public class ListMoviesOption extends MainMenuOption
 {
+
     @Override
     public String getOptionType()
     {
@@ -19,6 +20,6 @@ public class ListMoviesOption extends MainMenuOption
     @Override
     public String toString()
     {
-        return "List movies";
+        return OutputStrings.OPTIONS_LIST_MOVIES;
     }
 }
