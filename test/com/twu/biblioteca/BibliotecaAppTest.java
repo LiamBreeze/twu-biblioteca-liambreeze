@@ -45,7 +45,8 @@ public class BibliotecaAppTest
                         "  1) List books",
                         "  2) Checkout book",
                         "  3) Return book",
-                        "  4) Quit",
+                        "  4) List movies",
+                        "  5) Quit",
                 };
 
         consoleMock.assertSTDOutContains(expectedOptionsString, 3);
@@ -66,6 +67,6 @@ public class BibliotecaAppTest
                         "Select a valid option!",
                 };
 
-        consoleMock.assertSTDOutContains(expectedMessage, 17);
+        consoleMock.assertSTDOutContains(expectedMessage, 19);
     }
 }

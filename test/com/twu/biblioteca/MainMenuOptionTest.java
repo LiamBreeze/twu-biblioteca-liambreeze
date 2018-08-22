@@ -15,7 +15,8 @@ public class MainMenuOptionTest
         testData.add(new String[]{"1", MainMenuOption.LIST_BOOKS});
         testData.add(new String[]{"2", MainMenuOption.CHECKOUT_BOOK});
         testData.add(new String[]{"3", MainMenuOption.RETURN_BOOK});
-        testData.add(new String[]{"4", MainMenuOption.QUIT});
+        testData.add(new String[]{"4", MainMenuOption.LIST_MOVIES});
+        testData.add(new String[]{"5", MainMenuOption.QUIT});
 
 
         for (String[] data : testData)

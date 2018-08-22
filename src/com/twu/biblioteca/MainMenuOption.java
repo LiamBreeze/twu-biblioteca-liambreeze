@@ -7,8 +7,17 @@ public abstract class MainMenuOption
     public static final String LIST_BOOKS = "1";
     public static final String CHECKOUT_BOOK = "2";
     public static final String RETURN_BOOK = "3";
-    public static final String QUIT = "4";
+    public static final String LIST_MOVIES = "4";
+    public static final String QUIT = "5";
     public static final String INVALID = "";
+
+    public static final String[] OPTION_LIST = {
+            LIST_BOOKS,
+            CHECKOUT_BOOK,
+            RETURN_BOOK,
+            LIST_MOVIES,
+            QUIT,
+    };
 
     public abstract String getOptionType();
 
@@ -28,6 +37,9 @@ public abstract class MainMenuOption
         } else if (type.equals(RETURN_BOOK))
         {
             option = new ReturnBookOption();
+        } else if (type.equals(LIST_MOVIES))
+        {
+            option = new ListMoviesOption();
         }
 
         return option;
@@ -35,13 +47,7 @@ public abstract class MainMenuOption
 
     public static String[] getOptionsList()
     {
-        return new String[]
-                {
-                        LIST_BOOKS,
-                        CHECKOUT_BOOK,
-                        RETURN_BOOK,
-                        QUIT,
-                };
+        return OPTION_LIST;
     }
 
     protected Book getBookFromUser()

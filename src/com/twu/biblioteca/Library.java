@@ -49,4 +49,8 @@ public class Library
             System.out.println(OutputStrings.BOOK_RETURN_UNSUCCESSFUL_MESSAGE);
         }
     }
+
+    public void listAvailableMovies()
+    {
+    }
 }
