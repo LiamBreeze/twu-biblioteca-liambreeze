@@ -10,6 +10,7 @@ public class OutputStrings
     public static final String OPTIONS_CHECK_OUT_BOOK = "Checkout book";
     public static final String OPTIONS_RETURN_BOOK = "Return book";
     public static final String OPTIONS_LIST_MOVIES = "List movies";
+    public static final String OPTION_CHECKOUT_MOVIE = "Checkout movie";
     public static final String INVALID_MENU_OPTION_SELECTED = "Select a valid option!";
 
     public static final String CHECK_OUT_BOOK_SUCCESS_MESSAGE = "Thank you! Enjoy the book";
