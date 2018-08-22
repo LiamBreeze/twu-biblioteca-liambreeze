@@ -23,9 +23,11 @@ public class Library
         availableMovies.add(new Movie("Movie2", 2002, "Director2", 10));
     }
 
-    public void checkoutBook(Book book)
+    public void checkoutBook(String username, String password, Book book)
     {
-        if (availableBooks.contains(book))
+        UserLoginManager userLoginManager = new UserLoginManager();
+
+        if (userLoginManager.loginUser(username, password) && availableBooks.contains(book))
         {
             availableBooks.remove(book);
             checkedOutBooks.add(book);
@@ -70,4 +72,5 @@ public class Library
             availableMovies.remove(movie);
         }
     }
+
 }

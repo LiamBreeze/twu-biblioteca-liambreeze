@@ -48,9 +48,11 @@ public class CheckoutBookOptionTest
     {
         consoleMock.addUserInputSequence(new String[]
                 {
+                        "username",
+                        "password",
                         title,
                         author,
-                        yearPublished
+                        yearPublished,
                 });
     }
 
@@ -62,7 +64,7 @@ public class CheckoutBookOptionTest
                 {
                         "| Book2 | Author2 |           2002 |"
                 };
-        consoleMock.assertSTDOutContains(outputWithoutBook1, 5);
+        consoleMock.assertSTDOutContains(outputWithoutBook1, 6);
     }
 
     private void assertSuccessMessageWasPrinted()
@@ -72,7 +74,7 @@ public class CheckoutBookOptionTest
                         "Thank you! Enjoy the book",
                 };
 
-        consoleMock.assertSTDOutContains(expectedMessage, 1);
+        consoleMock.assertSTDOutContains(expectedMessage, 2);
     }
 
     private void assertUnsuccessfulMessageWasPrinted()
@@ -81,6 +83,6 @@ public class CheckoutBookOptionTest
                 {
                         "That book is not available",
                 };
-        consoleMock.assertSTDOutContains(expectedMessage, 1);
+        consoleMock.assertSTDOutContains(expectedMessage, 2);
     }
 }

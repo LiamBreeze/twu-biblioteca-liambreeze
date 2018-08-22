@@ -36,7 +36,7 @@ public class ReturnBookOptionTest
         String[] userInput = {"Book2", "Author2", "2002"};
 
         Book checkedOutBook = new Book("Book2", "Author2", 2002);
-        testLibrary.checkoutBook(checkedOutBook);
+        testLibrary.checkoutBook("username", "password", checkedOutBook);
 
         runReturnBookTest(userInput);
 
@@ -53,9 +53,9 @@ public class ReturnBookOptionTest
                 };
 
         Book checkedOutBook = new Book("Book1", "Author1", 2001);
-        testLibrary.checkoutBook(checkedOutBook);
+        testLibrary.checkoutBook("username", "password", checkedOutBook);
         checkedOutBook = new Book("Book2", "Author2", 2002);
-        testLibrary.checkoutBook(checkedOutBook);
+        testLibrary.checkoutBook("username", "password", checkedOutBook);
 
         runReturnBookTest(userInput);
 
@@ -68,7 +68,7 @@ public class ReturnBookOptionTest
         String[] userInput = {"Book2", "Author2", "2002"};
 
         Book checkedOutBook = new Book("Book2", "Author2", 2002);
-        testLibrary.checkoutBook(checkedOutBook);
+        testLibrary.checkoutBook("username", "password", checkedOutBook);
 
         consoleMock.clearSTDOut();
 

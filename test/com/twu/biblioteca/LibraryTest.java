@@ -70,6 +70,22 @@ public class LibraryTest
         runMovieCheckoutTest(moviesToCheckout, expectedMovieList);
     }
 
+    @Test
+    public void testCheckoutBookFailsWithoutLogin()
+    {
+        String[] expectedOutput =
+                {
+                        "| Book1 | Author1 |           2001 |",
+                        "| Book2 | Author2 |           2002 |",
+                };
+
+        Book testBook = new Book("Book1", "Author1", 2001);
+        testLibrary.checkoutBook("", "", testBook);
+
+        testLibrary.listAvailableBooks();
+        consoleMock.assertSTDOutContains(expectedOutput, 4);
+    }
+
     private void runMovieCheckoutTest(Movie[] moviesToCheckout, String[] expectedMovieList)
     {
         for (int movieNumber = 0; movieNumber < moviesToCheckout.length; movieNumber++)
