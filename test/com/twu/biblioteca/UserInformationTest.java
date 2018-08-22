@@ -9,10 +9,10 @@ public class UserInformationTest
     @Test
     public void testLoginUser()
     {
-        UserInformation validUser = UserInformation.createUserLogin("xxx-xxxx", "password");
+        UserInformation validUser = UserInformation.create("xxx-xxxx", "password");
         Assert.assertNotNull(validUser);
 
-        UserInformation invalidUser = UserInformation.createUserLogin("-", "-");
+        UserInformation invalidUser = UserInformation.create("-", "-");
         Assert.assertNull(invalidUser);
     }
 }

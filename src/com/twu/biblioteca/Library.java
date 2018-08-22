@@ -23,10 +23,8 @@ public class Library
         availableMovies.add(new Movie("Movie2", 2002, "Director2", 10));
     }
 
-    public void checkoutBook(String username, String password, Book book)
+    public void checkoutBook(UserInformation userInformation, Book book)
     {
-        UserInformation userInformation = UserInformation.createUserLogin(username, password);
-
         if (userInformation != null && availableBooks.contains(book))
         {
             availableBooks.remove(book);
@@ -45,10 +43,8 @@ public class Library
         bookListPrinter.printBookList(availableBooks);
     }
 
-    public void returnBook(String username, String password, Book book)
+    public void returnBook(UserInformation userInformation, Book book)
     {
-        UserInformation userInformation = UserInformation.createUserLogin(username, password);
-
         if (userInformation != null &&
                 book != null &&
                 checkedOutBooks.contains(book))

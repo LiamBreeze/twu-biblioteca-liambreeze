@@ -80,7 +80,7 @@ public class LibraryTest
                 };
 
         Book testBook = new Book("Book1", "Author1", 2001);
-        testLibrary.checkoutBook("", "", testBook);
+        testLibrary.checkoutBook(null, testBook);
 
         testLibrary.listAvailableBooks();
         consoleMock.assertSTDOutContains(expectedOutput, 4);
@@ -96,11 +96,11 @@ public class LibraryTest
                 };
 
         Book testBook = new Book("Book1", "Author1", 2001);
-        testLibrary.checkoutBook("xxx-xxxx", "password", testBook);
+        testLibrary.checkoutBook(UserInformation.create("xxx-xxxx", "password"), testBook);
 
         consoleMock.clearSTDOut();
 
-        testLibrary.returnBook(".", ".", testBook);
+        testLibrary.returnBook(null, testBook);
 
         testLibrary.listAvailableBooks();
         consoleMock.assertSTDOutContains(expectedOutput, 4);

@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.Scanner;
-
 public abstract class MainMenuOption
 {
     public static final String LIST_BOOKS = "1";
@@ -60,58 +58,5 @@ public abstract class MainMenuOption
     public static String[] getOptionsList()
     {
         return OPTION_LIST;
-    }
-
-    protected Book getBookFromUser()
-    {
-        Scanner userInputScanner = new Scanner(System.in);
-
-        Book book = null;
-
-        System.out.print(OutputStrings.REQUEST_BOOK_TITLE);
-        if (userInputScanner.hasNext())
-        {
-            String title = userInputScanner.next();
-
-            System.out.print(OutputStrings.REQUEST_BOOK_AUTHOR);
-            String author = userInputScanner.next();
-
-            System.out.print(OutputStrings.REQUEST_BOOK_PUBLISHING_YEAR);
-            int publishingYear = userInputScanner.nextInt();
-
-            System.out.println();
-
-            book = new Book(title, author, publishingYear);
-        }
-
-        return book;
-    }
-
-    protected String getUserUsername()
-    {
-        String username = null;
-        Scanner input = new Scanner(System.in);
-
-        System.out.print("Username: ");
-        if (input.hasNext())
-        {
-            username = input.next();
-        }
-
-        return username;
-    }
-
-    protected String getUserPassword()
-    {
-        String password = null;
-        Scanner input = new Scanner(System.in);
-
-        System.out.print("Password: ");
-        if (input.hasNext())
-        {
-            password = input.next();
-        }
-
-        return password;
     }
 }

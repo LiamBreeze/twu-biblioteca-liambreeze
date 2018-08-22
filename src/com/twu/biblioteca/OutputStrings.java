@@ -30,6 +30,6 @@ public class OutputStrings
     public static final String REQUEST_MOVIE_RATING = "Movie rating: ";
 
     public static final String UNABLE_TO_LOGIN = "Unable to login";
-    
+
     public static final String NEW_LINE_SEPARATOR = System.getProperty("line.separator");
 }

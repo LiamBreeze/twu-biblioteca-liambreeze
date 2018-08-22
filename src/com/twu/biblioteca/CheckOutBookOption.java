@@ -11,11 +11,7 @@ public class CheckoutBookOption extends MainMenuOption
     @Override
     public boolean select(Library library)
     {
-        String username = getUserUsername();
-        String password = getUserPassword();
-        System.out.println();
-
-        library.checkoutBook(username, password, getBookFromUser());
+        library.checkoutBook(UserInformation.create(), Book.createBookFromUserInput());
         return false;
     }
 

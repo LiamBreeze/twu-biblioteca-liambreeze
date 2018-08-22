@@ -12,11 +12,7 @@ public class ReturnBookOption extends MainMenuOption
     @Override
     public boolean select(Library library)
     {
-        String username = getUserUsername();
-        String password = getUserPassword();
-        System.out.println();
-
-        library.returnBook(username, password, getBookFromUser());
+        library.returnBook(UserInformation.create(), Book.createBookFromUserInput());
         return false;
     }
 

@@ -50,9 +50,9 @@ public class UserInformationOptionTest
 
         String[] expectedOutput = new String[]
                 {
-                        "Name: name",
+                        "Name:          name",
                         "Email address: email",
-                        "Phone number: 00000 000 000"
+                        "Phone number:  00000 000 000"
                 };
         consoleMock.assertSTDOutContains(expectedOutput, 1);
     }

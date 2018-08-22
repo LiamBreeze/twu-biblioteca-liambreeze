@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.Scanner;
+
 public class Book
 {
     private final String title;
@@ -52,5 +54,30 @@ public class Book
     public int hashCode()
     {
         return title.hashCode() + author.hashCode() + publishingYear;
+    }
+
+    public static Book createBookFromUserInput()
+    {
+        Scanner userInputScanner = new Scanner(System.in);
+
+        Book book = null;
+
+        System.out.print(OutputStrings.REQUEST_BOOK_TITLE);
+        if (userInputScanner.hasNext())
+        {
+            String title = userInputScanner.next();
+
+            System.out.print(OutputStrings.REQUEST_BOOK_AUTHOR);
+            String author = userInputScanner.next();
+
+            System.out.print(OutputStrings.REQUEST_BOOK_PUBLISHING_YEAR);
+            int publishingYear = userInputScanner.nextInt();
+
+            System.out.println();
+
+            book = new Book(title, author, publishingYear);
+        }
+
+        return book;
     }
 }
