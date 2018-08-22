@@ -23,5 +23,10 @@ public class OutputStrings
     public static final String REQUEST_BOOK_AUTHOR = "Book author: ";
     public static final String REQUEST_BOOK_PUBLISHING_YEAR = "Book publishing year: ";
 
+    public static final String REQUEST_MOVIE_TITLE = "Movie title: ";
+    public static final String REQUEST_MOVIE_RELEASE_YEAR = "Movie release year: ";
+    public static final String REQUEST_MOVIE_DIRECTOR = "Movie director: ";
+    public static final String REQUEST_MOVIE_RATING = "Movie rating: ";
+
     public static final String NEW_LINE_SEPARATOR = System.getProperty("line.separator");
 }

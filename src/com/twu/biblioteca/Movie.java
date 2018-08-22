@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.Objects;
-
 public class Movie
 {
     private String title;
@@ -42,8 +40,7 @@ public class Movie
         if (hasRating())
         {
             return rating;
-        }
-        else
+        } else
         {
             throw new MovieHasNoRatingException();
         }

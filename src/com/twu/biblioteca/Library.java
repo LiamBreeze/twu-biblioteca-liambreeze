@@ -6,7 +6,8 @@ public class Library
 {
     private final ArrayList<Book> availableBooks;
     private final ArrayList<Book> checkedOutBooks;
-    private ArrayList<Movie> availableMovies;
+
+    private final ArrayList<Movie> availableMovies;
 
     public Library()
     {

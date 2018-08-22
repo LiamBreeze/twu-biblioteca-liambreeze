@@ -52,8 +52,7 @@ public class MovieListPrinter
         if (movie.hasRating())
         {
             tablePrinter.printTableEntryWithLeftPadding(Integer.toString(movie.getRating()), 6);
-        }
-        else
+        } else
         {
             tablePrinter.printTableEntryWithLeftPadding(UNRATED_STRING, 6);
         }
