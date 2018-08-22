@@ -30,7 +30,20 @@ public class MovieListPrinter
 
     private void printMovies(ArrayList<Movie> movies)
     {
-        System.out.println("| Movie1 |         2001 | Director1 |      1 |");
+        for (Movie movie : movies)
+        {
+            printMovie(movie);
+        }
+    }
+
+    private void printMovie(Movie movie)
+    {
+        tablePrinter.printTableEntry(movie.getTitle());
+        tablePrinter.printTableEntryWithLeftPadding(Integer.toString(movie.getReleaseYear()), 9);
+        tablePrinter.printTableEntry(movie.getDirector());
+        tablePrinter.printTableEntryWithLeftPadding(Integer.toString(movie.getRating()), 6);
+        tablePrinter.printColumnSeparator();
+        tablePrinter.printNewLine();
     }
 
     private void printTitle()
