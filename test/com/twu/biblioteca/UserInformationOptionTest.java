@@ -37,4 +37,23 @@ public class UserInformationOptionTest
                 };
         consoleMock.assertSTDOutContains(expectedOutput, 1);
     }
+
+    @Test
+    public void testUserInformationDisplayed()
+    {
+        consoleMock.addUserInputSequence(new String[]
+                {
+                        "xxx-xxxx", "password"
+                });
+
+        userInformationOption.select(testLibrary);
+
+        String[] expectedOutput = new String[]
+                {
+                        "Name: name",
+                        "Email address: email",
+                        "Phone number: 00000 000 000"
+                };
+        consoleMock.assertSTDOutContains(expectedOutput, 1);
+    }
 }

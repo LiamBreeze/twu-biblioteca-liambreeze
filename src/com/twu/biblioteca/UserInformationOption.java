@@ -16,9 +16,15 @@ public class UserInformationOption extends MainMenuOption
         String password = getUserPassword();
         System.out.println();
 
-        UserLoginManager userLoginManager = new UserLoginManager();
+        UserInformation userinformation = UserInformation.createUserLogin(username, password);
 
-        if (!userLoginManager.loginUser(username, password))
+        if (userinformation != null)
+        {
+            System.out.println("Name: " + userinformation.getName());
+            System.out.println("Email address: " + userinformation.getEmailAddress());
+            System.out.println("Phone number: " + userinformation.getPhoneNumber());
+        }
+        else
         {
             System.out.println(OutputStrings.UNABLE_TO_LOGIN);
         }

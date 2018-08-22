@@ -25,9 +25,9 @@ public class Library
 
     public void checkoutBook(String username, String password, Book book)
     {
-        UserLoginManager userLoginManager = new UserLoginManager();
+        UserInformation userInformation = UserInformation.createUserLogin(username, password);
 
-        if (userLoginManager.loginUser(username, password) && availableBooks.contains(book))
+        if (userInformation != null && availableBooks.contains(book))
         {
             availableBooks.remove(book);
             checkedOutBooks.add(book);
@@ -47,9 +47,9 @@ public class Library
 
     public void returnBook(String username, String password, Book book)
     {
-        UserLoginManager userLoginManager = new UserLoginManager();
+        UserInformation userInformation = UserInformation.createUserLogin(username, password);
 
-        if (userLoginManager.loginUser(username, password) &&
+        if (userInformation != null &&
                 book != null &&
                 checkedOutBooks.contains(book))
         {
