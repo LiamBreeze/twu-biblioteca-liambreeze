@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -7,6 +8,14 @@ public class LibraryTest
 {
     @Rule
     public final ConsoleTestRule consoleMock = new ConsoleTestRule();
+
+    private Library testLibrary;
+
+    @Before
+    public void setUp()
+    {
+        testLibrary = new Library();
+    }
 
     @Test
     public void testCheckoutMovieWithNoneExistingMovie()
@@ -18,13 +27,12 @@ public class LibraryTest
                         "| Movie2 |         2002 | Director2 |      10 |",
                 };
 
-        Library testLibrary = new Library();
-        Movie testMovieNotInLibrary = new Movie("NotInLibrary", 0, "");
+        Movie[] moviesToCheckout = new Movie[]
+                {
+                        new Movie("NotInLibrary", 0, ""),
+                };
 
-        testLibrary.checkoutMovie(testMovieNotInLibrary);
-
-        testLibrary.listAvailableMovies();
-        consoleMock.assertSTDOutContains(expectedMovieList, 3);
+        runMovieCheckoutTest(moviesToCheckout, expectedMovieList);
     }
 
     @Test
@@ -36,10 +44,38 @@ public class LibraryTest
                         "| Movie2 |         2002 | Director2 |      10 |",
                 };
 
-        Library testLibrary = new Library();
-        Movie testMovieInLibrary = new Movie("Movie1", 2001, "Director1", 1);
+        Movie[] moviesToCheckout = new Movie[]
+                {
+                        new Movie("Movie1", 2001, "Director1", 1),
+                };
 
-        testLibrary.checkoutMovie(testMovieInLibrary);
+        runMovieCheckoutTest(moviesToCheckout, expectedMovieList);
+    }
+
+    @Test
+    public void testCheckoutMultipleMovies()
+    {
+        String[] expectedMovieList = new String[]
+                {
+                        "=============================================="
+                };
+
+        Movie[] moviesToCheckout = new Movie[]
+                {
+                        new Movie("Movie0", 2000, "Director0"),
+                        new Movie("Movie1", 2001, "Director1", 1),
+                        new Movie("Movie2", 2002, "Director2", 10),
+                };
+
+        runMovieCheckoutTest(moviesToCheckout, expectedMovieList);
+    }
+
+    private void runMovieCheckoutTest(Movie[] moviesToCheckout, String[] expectedMovieList)
+    {
+        for (int movieNumber = 0; movieNumber < moviesToCheckout.length; movieNumber++)
+        {
+            testLibrary.checkoutMovie(moviesToCheckout[movieNumber]);
+        }
 
         testLibrary.listAvailableMovies();
         consoleMock.assertSTDOutContains(expectedMovieList, 3);
