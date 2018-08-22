@@ -10,6 +10,7 @@ public class MovieListPrinter
     private static final String RELEASE_YEAR_HEADING = "Release Year";
     private static final String DIRECTOR_HEADING = "Director";
     private static final String RATING_HEADING = "Rating";
+    public static final String UNRATED_STRING = "U";
 
 
     private final TablePrinter tablePrinter;
@@ -41,9 +42,21 @@ public class MovieListPrinter
         tablePrinter.printTableEntry(movie.getTitle());
         tablePrinter.printTableEntryWithLeftPadding(Integer.toString(movie.getReleaseYear()), 9);
         tablePrinter.printTableEntry(movie.getDirector());
-        tablePrinter.printTableEntryWithLeftPadding(Integer.toString(movie.getRating()), 6);
+        printMovieRating(movie);
         tablePrinter.printColumnSeparator();
         tablePrinter.printNewLine();
+    }
+
+    private void printMovieRating(Movie movie)
+    {
+        if (movie.hasRating())
+        {
+            tablePrinter.printTableEntryWithLeftPadding(Integer.toString(movie.getRating()), 6);
+        }
+        else
+        {
+            tablePrinter.printTableEntryWithLeftPadding(UNRATED_STRING, 6);
+        }
     }
 
     private void printTitle()

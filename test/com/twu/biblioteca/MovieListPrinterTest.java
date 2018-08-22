@@ -68,6 +68,25 @@ public class MovieListPrinterTest
         consoleMock.assertSTDOutContains(expectedMovieOutput, 3);
     }
 
+    @Test
+    public void testListMoviesDisplaysCorrectRating()
+    {
+        String[] expectedOutput = new String[]
+                {
+                        "| Movie0 |         2000 | Director0 |      U |",
+                        "| Movie0 |         2000 | Director0 |      1 |",
+                        "| Movie0 |         2000 | Director0 |      10 |",
+                };
+
+        testMovieList.add(new Movie("Movie0", 2000, "Director0"));
+        testMovieList.add(new Movie("Movie0", 2000, "Director0", 1));
+        testMovieList.add(new Movie("Movie0", 2000, "Director0", 10));
+
+        testMovieListPrinter.printMovieList(testMovieList);
+
+        consoleMock.assertSTDOutContains(expectedOutput, 3);
+    }
+
     private ArrayList<Movie> addMovies(ArrayList<Movie> movieList, int numberOfMovies)
     {
         for (int movieNumber = 0; movieNumber < numberOfMovies; movieNumber++)

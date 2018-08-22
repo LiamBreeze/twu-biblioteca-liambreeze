@@ -15,6 +15,11 @@ public class Movie
         this.rating = rating;
     }
 
+    public Movie(String title, int releaseYear, String director)
+    {
+        this(title, releaseYear, director, 0);
+    }
+
     public String getTitle()
     {
         return title;
@@ -30,8 +35,20 @@ public class Movie
         return director;
     }
 
-    public int getRating()
+    public int getRating() throws MovieHasNoRatingException
     {
-        return rating;
+        if (hasRating())
+        {
+            return rating;
+        }
+        else
+        {
+            throw new MovieHasNoRatingException();
+        }
+    }
+
+    public boolean hasRating()
+    {
+        return rating > 0 && rating < 11;
     }
 }
