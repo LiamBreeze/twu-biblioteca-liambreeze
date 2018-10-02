@@ -32,11 +32,13 @@ public class BibliotecaApp
 
         boolean isQuitSelected = false;
 
-        while (!isQuitSelected) {
+        while (!isQuitSelected)
+        {
             System.out.println();
             System.out.println(mainMenu);
 
-            if (userInputScanner.hasNext()) {
+            if (userInputScanner.hasNext())
+            {
                 String userOptionSelection = userInputScanner.next();
                 isQuitSelected = mainMenu.selectOption(library, userOptionSelection);
             }

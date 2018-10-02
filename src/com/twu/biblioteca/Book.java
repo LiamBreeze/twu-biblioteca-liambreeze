@@ -22,7 +22,8 @@ public class Book
         Book book = null;
 
         System.out.print(OutputStrings.REQUEST_BOOK_TITLE);
-        if (userInputScanner.hasNext()) {
+        if (userInputScanner.hasNext())
+        {
             String title = userInputScanner.next();
 
             System.out.print(OutputStrings.REQUEST_BOOK_AUTHOR);
@@ -57,11 +58,13 @@ public class Book
     @Override
     public boolean equals(Object other)
     {
-        if (this == other) {
+        if (this == other)
+        {
             return true;
         }
 
-        if (other == null || getClass() != other.getClass()) {
+        if (other == null || getClass() != other.getClass())
+        {
             return false;
         }
 

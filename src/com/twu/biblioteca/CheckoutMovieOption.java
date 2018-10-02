@@ -44,7 +44,8 @@ public class CheckoutMovieOption extends MainMenuOption
 
         String title = null;
 
-        if (input.hasNext()) {
+        if (input.hasNext())
+        {
             title = input.next();
         }
 
@@ -57,7 +58,8 @@ public class CheckoutMovieOption extends MainMenuOption
 
         int releaseYear = 0;
 
-        if (input.hasNext()) {
+        if (input.hasNext())
+        {
             releaseYear = input.nextInt();
         }
 
@@ -70,7 +72,8 @@ public class CheckoutMovieOption extends MainMenuOption
 
         String director = null;
 
-        if (input.hasNext()) {
+        if (input.hasNext())
+        {
             director = input.next();
         }
 
@@ -83,10 +86,13 @@ public class CheckoutMovieOption extends MainMenuOption
 
         int rating = 0;
 
-        if (input.hasNext()) {
-            try {
+        if (input.hasNext())
+        {
+            try
+            {
                 rating = input.nextInt();
-            } catch (InputMismatchException exception) {
+            } catch (InputMismatchException exception)
+            {
             }
         }
 

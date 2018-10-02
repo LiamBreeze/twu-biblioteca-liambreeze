@@ -17,7 +17,8 @@ public class MainMenu
         stringBuilder.append(OutputStrings.OPTIONS);
         stringBuilder.append(OutputStrings.NEW_LINE_SEPARATOR);
 
-        for (String option : MainMenuOption.getOptionsList()) {
+        for (String option : MainMenuOption.getOptionsList())
+        {
             stringBuilder.append("  ");
             stringBuilder.append(option);
             stringBuilder.append(") ");

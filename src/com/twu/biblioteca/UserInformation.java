@@ -24,7 +24,8 @@ public class UserInformation
     {
         UserInformation userInformation = null;
 
-        if (isUserLoginSuccessful(username, password)) {
+        if (isUserLoginSuccessful(username, password))
+        {
             userInformation = new UserInformation("name", "email", "00000 000 000");
         }
 
@@ -37,7 +38,8 @@ public class UserInformation
         Scanner input = new Scanner(System.in);
 
         System.out.print("Username: ");
-        if (input.hasNext()) {
+        if (input.hasNext())
+        {
             username = input.next();
         }
 
@@ -50,7 +52,8 @@ public class UserInformation
         Scanner input = new Scanner(System.in);
 
         System.out.print("Password: ");
-        if (input.hasNext()) {
+        if (input.hasNext())
+        {
             password = input.next();
         }
         System.out.println();

@@ -28,7 +28,8 @@ public class MovieListPrinter
 
     private void printMovies(ArrayList<Movie> movies)
     {
-        for (Movie movie : movies) {
+        for (Movie movie : movies)
+        {
             printMovie(movie);
         }
     }
@@ -45,9 +46,11 @@ public class MovieListPrinter
 
     private void printMovieRating(Movie movie)
     {
-        if (movie.hasRating()) {
+        if (movie.hasRating())
+        {
             tablePrinter.printTableEntryWithLeftPadding(Integer.toString(movie.getRating()), 6);
-        } else {
+        } else
+        {
             tablePrinter.printTableEntryWithLeftPadding(UNRATED_STRING, 6);
         }
     }

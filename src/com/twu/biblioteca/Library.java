@@ -26,13 +26,18 @@ public class Library
     public void checkoutBook(UserInformation userInformation, Book book)
     {
         if (userInformation != null && availableBooks.contains(book)) {
-            availableBooks.remove(book);
-            checkedOutBooks.add(book);
-
-            System.out.println(OutputStrings.CHECK_OUT_BOOK_SUCCESS_MESSAGE);
+            checkoutBook(book);
         } else {
             System.out.println(OutputStrings.CHECK_OUT_BOOK_UNSUCCESSFUL_MESSAGE);
         }
+    }
+
+    private void checkoutBook(Book book)
+    {
+        availableBooks.remove(book);
+        checkedOutBooks.add(book);
+
+        System.out.println(OutputStrings.CHECK_OUT_BOOK_SUCCESS_MESSAGE);
     }
 
     public void listAvailableBooks()
