@@ -17,13 +17,11 @@ public class UserInformationOption extends MainMenuOption
     {
         UserInformation userinformation = UserInformation.create();
 
-        if (userinformation != null)
-        {
+        if (userinformation != null) {
             System.out.println(USER_INFORMATION_NAME + userinformation.getName());
             System.out.println(USER_INFORMATION_EMAIL_ADDRESS + userinformation.getEmailAddress());
             System.out.println(USER_INFORMATION_PHONE_NUMBER + userinformation.getPhoneNumber());
-        } else
-        {
+        } else {
             System.out.println(OutputStrings.UNABLE_TO_LOGIN);
         }
 

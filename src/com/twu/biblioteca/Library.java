@@ -25,14 +25,12 @@ public class Library
 
     public void checkoutBook(UserInformation userInformation, Book book)
     {
-        if (userInformation != null && availableBooks.contains(book))
-        {
+        if (userInformation != null && availableBooks.contains(book)) {
             availableBooks.remove(book);
             checkedOutBooks.add(book);
 
             System.out.println(OutputStrings.CHECK_OUT_BOOK_SUCCESS_MESSAGE);
-        } else
-        {
+        } else {
             System.out.println(OutputStrings.CHECK_OUT_BOOK_UNSUCCESSFUL_MESSAGE);
         }
     }
@@ -47,14 +45,12 @@ public class Library
     {
         if (userInformation != null &&
                 book != null &&
-                checkedOutBooks.contains(book))
-        {
+                checkedOutBooks.contains(book)) {
             checkedOutBooks.remove(book);
             availableBooks.add(book);
 
             System.out.println(OutputStrings.BOOK_RETURN_SUCCESS_MESSAGE);
-        } else
-        {
+        } else {
             System.out.println(OutputStrings.BOOK_RETURN_UNSUCCESSFUL_MESSAGE);
         }
     }
@@ -67,8 +63,7 @@ public class Library
 
     public void checkoutMovie(Movie movie)
     {
-        if (availableMovies.contains(movie))
-        {
+        if (availableMovies.contains(movie)) {
             availableMovies.remove(movie);
         }
     }

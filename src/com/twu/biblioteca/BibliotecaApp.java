@@ -7,16 +7,16 @@ public class BibliotecaApp
     private MainMenu mainMenu;
     private Library library;
 
-    public static void main(String[] args)
-    {
-        BibliotecaApp bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.start();
-    }
-
     public BibliotecaApp()
     {
         library = new Library();
         mainMenu = new MainMenu();
+    }
+
+    public static void main(String[] args)
+    {
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.start();
     }
 
     public void start()
@@ -32,13 +32,11 @@ public class BibliotecaApp
 
         boolean isQuitSelected = false;
 
-        while (!isQuitSelected)
-        {
+        while (!isQuitSelected) {
             System.out.println();
             System.out.println(mainMenu);
 
-            if (userInputScanner.hasNext())
-            {
+            if (userInputScanner.hasNext()) {
                 String userOptionSelection = userInputScanner.next();
                 isQuitSelected = mainMenu.selectOption(library, userOptionSelection);
             }

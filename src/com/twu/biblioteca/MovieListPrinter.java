@@ -5,14 +5,11 @@ import java.util.ArrayList;
 public class MovieListPrinter
 {
     public static final int TABLE_WIDTH = 46;
-
+    public static final String UNRATED_STRING = "U";
     private static final String NAME_HEADING = "Name";
     private static final String RELEASE_YEAR_HEADING = "Release Year";
     private static final String DIRECTOR_HEADING = "Director";
     private static final String RATING_HEADING = "Rating";
-    public static final String UNRATED_STRING = "U";
-
-
     private final TablePrinter tablePrinter;
 
     public MovieListPrinter()
@@ -31,8 +28,7 @@ public class MovieListPrinter
 
     private void printMovies(ArrayList<Movie> movies)
     {
-        for (Movie movie : movies)
-        {
+        for (Movie movie : movies) {
             printMovie(movie);
         }
     }
@@ -49,11 +45,9 @@ public class MovieListPrinter
 
     private void printMovieRating(Movie movie)
     {
-        if (movie.hasRating())
-        {
+        if (movie.hasRating()) {
             tablePrinter.printTableEntryWithLeftPadding(Integer.toString(movie.getRating()), 6);
-        } else
-        {
+        } else {
             tablePrinter.printTableEntryWithLeftPadding(UNRATED_STRING, 6);
         }
     }

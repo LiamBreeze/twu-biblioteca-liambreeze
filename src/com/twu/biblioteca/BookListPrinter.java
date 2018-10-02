@@ -39,8 +39,7 @@ public class BookListPrinter
 
     private void printBooks(ArrayList<Book> bookList)
     {
-        for (Book book : bookList)
-        {
+        for (Book book : bookList) {
             printBook(book);
         }
     }

@@ -2,12 +2,11 @@ package com.twu.biblioteca;
 
 public class TablePrinter
 {
-    private final int tableWidth;
-
     private static final String HEADING = "=";
     private static final String ROW_SEPARATOR = "-";
     private static final String COLUMN_SEPARATOR = "|";
     private static final String SPACE = " ";
+    private final int tableWidth;
 
     public TablePrinter(int tableWidth)
     {
@@ -38,8 +37,7 @@ public class TablePrinter
 
     public void printRepeatedString(String characterToPrint, int length)
     {
-        for (int charNum = 0; charNum < length; charNum++)
-        {
+        for (int charNum = 0; charNum < length; charNum++) {
             System.out.print(characterToPrint);
         }
     }
@@ -57,8 +55,7 @@ public class TablePrinter
     public void printTableEntryWithLeftPadding(String headingString, int paddingAmount)
     {
         System.out.print(COLUMN_SEPARATOR);
-        for (int paddingNumber = 0; paddingNumber < paddingAmount; paddingNumber++)
-        {
+        for (int paddingNumber = 0; paddingNumber < paddingAmount; paddingNumber++) {
             System.out.print(SPACE);
         }
         System.out.print(headingString);
