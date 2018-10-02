@@ -36,7 +36,7 @@ public class MovieTest
     {
         testMovieWithRating.getRating();
 
-        expectedException.expect(MovieHasNoRatingException.class);
+        expectedException.expect(NoRatingException.class);
         testMovieWithoutRating.getRating();
     }
 }

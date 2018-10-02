@@ -35,12 +35,12 @@ public class Movie
         return director;
     }
 
-    public int getRating() throws MovieHasNoRatingException
+    public int getRating() throws NoRatingException
     {
         if (hasRating()) {
             return rating;
         } else {
-            throw new MovieHasNoRatingException();
+            throw new NoRatingException();
         }
     }
 

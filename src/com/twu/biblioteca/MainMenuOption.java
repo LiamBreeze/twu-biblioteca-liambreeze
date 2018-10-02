@@ -16,7 +16,6 @@ public abstract class MainMenuOption
     public static final String INVALID = "";
 
     static final HashMap<String, MainMenuOption> optionListMap = new HashMap<String, MainMenuOption>();
-
     static {
         optionListMap.put(LIST_BOOKS, new ListBooksOption());
         optionListMap.put(CHECKOUT_BOOK, new CheckoutBookOption());
